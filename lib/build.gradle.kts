@@ -131,8 +131,8 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git@github.com:mzdyhrave/payrollkt.git")
-                    developerConnection.set("scm:git:git@github.com:mzdyhrave/payrollkt.git")
+                    connection.set("scm:git:git@github.com:mzdyhrave/legalioskotlin.git")
+                    developerConnection.set("scm:git:git@github.com:mzdyhrave/legalioskotlin.git")
                     url.set("https://mzdyhrave.github.io/payrolldocs/")
                 }
             }
