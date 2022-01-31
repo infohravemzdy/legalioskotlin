@@ -1,17 +1,32 @@
 package org.hravemzdy.legalios.service
 
 import com.github.michaelbull.result.*
+import org.hravemzdy.legalios.TestIntParams
+import org.hravemzdy.legalios.TestIntScenario
 import org.hravemzdy.legalios.service.errors.HistoryResultError
 import org.hravemzdy.legalios.interfaces.IBundleProps
 import org.hravemzdy.legalios.interfaces.IPropsTaxing
 import org.hravemzdy.legalios.service.types.Period
-import org.hravemzdy.legalios.service.ServiceLegalios
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.test.assertEquals
 
 class Service_Legalios_Example_04_Taxing_02_AllowanceDisab1stTest  : Spek({
     val testList = listOf(
+        TestIntScenario("2010", listOf(
+            TestIntParams( "2010-1", 2010, 1, 2010, 1, 210 ),
+            TestIntParams( "2010-2", 2010, 2, 2010, 2, 210 ),
+            TestIntParams( "2010-3", 2010, 3, 2010, 3, 210 ),
+            TestIntParams( "2010-4", 2010, 4, 2010, 4, 210 ),
+            TestIntParams( "2010-5", 2010, 5, 2010, 5, 210 ),
+            TestIntParams( "2010-6", 2010, 6, 2010, 6, 210 ),
+            TestIntParams( "2010-7", 2010, 7, 2010, 7, 210 ),
+            TestIntParams( "2010-8", 2010, 8, 2010, 8, 210 ),
+            TestIntParams( "2010-9", 2010, 9, 2010, 9, 210 ),
+            TestIntParams( "2010-10", 2010, 10, 2010, 10, 210 ),
+            TestIntParams( "2010-11", 2010, 11, 2010, 11, 210 ),
+            TestIntParams( "2010-12", 2010, 12, 2010, 12, 210 ),
+        )),
         TestIntScenario("2011", listOf(
             TestIntParams( "2011-1", 2011, 1, 2011, 1, 210 ),
             TestIntParams( "2011-2", 2011, 2, 2011, 2, 210 ),

@@ -1,5 +1,6 @@
 ﻿package org.hravemzdy.legalios.providers.period2017
 
+import org.hravemzdy.legalios.providers.Period2010.HistoryConstTaxing2010
 import org.hravemzdy.legalios.providers.period2016.HistoryConstTaxing2016
 import org.hravemzdy.legalios.providers.period2016.HistoryConstTaxing2016var05
 import java.math.BigDecimal
@@ -26,6 +27,8 @@ import java.math.BigDecimal
 //
 // FACTOR_SOLITARY                  Sazba daně na solidární zvýšení
 //
+// FACTOR_TAXRATE2                  Sazba daně pro druhé pásmo daně
+//
 // MIN_AMOUNT_OF_TAXBONUS           Minimální částka pro daňový bonus
 //
 // MAX_AMOUNT_OF_TAXBONUS           Maximální částka pro daňový bonus
@@ -37,6 +40,8 @@ import java.math.BigDecimal
 // MARGIN_INCOME_OF_WITHHOLD        Maximální výše příjmu pro srážkový příjem
 //
 // MARGIN_INCOME_OF_SOLITARY        Minimální výše příjmu pro solidární zvýšení daně
+//
+// MARGIN_INCOME_OF_TAXRATE2        Minimální výše příjmu pro druhé pásmo daně
 //
 // MARGIN_INCOME_OF_WHT_AGR         hranice příjmu pro srážkovou daň pro zaměstnace v pracovním poměru (nepodepsal prohlášení)
 //
@@ -61,12 +66,14 @@ object HistoryConstTaxing2017 {
     val FACTOR_ADVANCES:BigDecimal = HistoryConstTaxing2016.FACTOR_ADVANCES
     val FACTOR_WITHHOLD:BigDecimal = HistoryConstTaxing2016.FACTOR_WITHHOLD
     val FACTOR_SOLITARY:BigDecimal = HistoryConstTaxing2016.FACTOR_SOLITARY
+    val FACTOR_TAXRATE2:BigDecimal = HistoryConstTaxing2016.FACTOR_TAXRATE2
     const val MIN_AMOUNT_OF_TAXBONUS:Int = HistoryConstTaxing2016.MIN_AMOUNT_OF_TAXBONUS
     const val MAX_AMOUNT_OF_TAXBONUS:Int = HistoryConstTaxing2016.MAX_AMOUNT_OF_TAXBONUS
     const val MARGIN_INCOME_OF_TAXBONUS:Int = (HistoryConstSalary2017.MIN_MONTHLY_WAGE / 2)
     const val MARGIN_INCOME_OF_ROUNDING:Int = HistoryConstTaxing2016.MARGIN_INCOME_OF_ROUNDING
     const val MARGIN_INCOME_OF_WITHHOLD:Int = HistoryConstTaxing2016.MARGIN_INCOME_OF_WITHHOLD
     const val MARGIN_INCOME_OF_SOLITARY:Int = (4 * 28232)
+    const val MARGIN_INCOME_OF_TAXRATE2:Int = HistoryConstTaxing2016.MARGIN_INCOME_OF_TAXRATE2
     const val MARGIN_INCOME_OF_WHT_EMP:Int = HistoryConstTaxing2016.MARGIN_INCOME_OF_WHT_EMP
     const val MARGIN_INCOME_OF_WHT_AGR:Int = HistoryConstTaxing2016.MARGIN_INCOME_OF_WHT_AGR
 }

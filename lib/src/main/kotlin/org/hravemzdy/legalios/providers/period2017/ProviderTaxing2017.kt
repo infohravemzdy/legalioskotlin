@@ -5,6 +5,7 @@ import org.hravemzdy.legalios.providers.IProviderTaxing
 import org.hravemzdy.legalios.interfaces.IPropsTaxing
 import org.hravemzdy.legalios.interfaces.IPeriod
 import org.hravemzdy.legalios.props.PropsTaxing
+import org.hravemzdy.legalios.providers.Period2010.HistoryConstTaxing2010
 import org.hravemzdy.legalios.providers.period2013.HistoryConstHealth2013var08
 import java.math.BigDecimal
 
@@ -24,12 +25,14 @@ class ProviderTaxing2017 : ProviderBase(HistoryConstTaxing2017.VERSION_CODE), IP
             factorAdvances(period),
             factorWithhold(period),
             factorSolitary(period),
+            factorTaxRate2(period),
             minAmountOfTaxBonus(period),
             maxAmountOfTaxBonus(period),
             marginIncomeOfTaxBonus(period),
             marginIncomeOfRounding(period),
             marginIncomeOfWithhold(period),
             marginIncomeOfSolitary(period),
+            marginIncomeOfTaxRate2(period),
             marginIncomeOfWthEmp(period),
             marginIncomeOfWthAgr(period))
     }
@@ -84,6 +87,10 @@ class ProviderTaxing2017 : ProviderBase(HistoryConstTaxing2017.VERSION_CODE), IP
         return HistoryConstTaxing2017.FACTOR_SOLITARY
     }
 
+    override fun factorTaxRate2(period: IPeriod): BigDecimal {
+        return HistoryConstTaxing2017.FACTOR_TAXRATE2
+    }
+
     override fun minAmountOfTaxBonus(period: IPeriod): Int {
         return HistoryConstTaxing2017.MIN_AMOUNT_OF_TAXBONUS
     }
@@ -106,6 +113,10 @@ class ProviderTaxing2017 : ProviderBase(HistoryConstTaxing2017.VERSION_CODE), IP
 
     override fun marginIncomeOfSolitary(period: IPeriod): Int {
         return HistoryConstTaxing2017.MARGIN_INCOME_OF_SOLITARY
+    }
+
+    override fun marginIncomeOfTaxRate2(period: IPeriod): Int {
+        return HistoryConstTaxing2017.MARGIN_INCOME_OF_TAXRATE2
     }
 
     override fun marginIncomeOfWthEmp(period: IPeriod): Int {

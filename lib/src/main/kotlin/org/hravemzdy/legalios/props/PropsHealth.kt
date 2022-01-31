@@ -5,15 +5,23 @@ import org.hravemzdy.legalios.service.types.VersionId
 import java.math.BigDecimal
 
 class PropsHealth(version: VersionId,
-                  override val minMonthlyBasis: Int,
-                  override val maxAnnualsBasis: Int,
-                  override val limMonthlyState: Int,
-                  override val limMonthlyDis50: Int,
-                  override val factorCompound: BigDecimal,
-                  override val factorEmployee: BigDecimal,
-                  override val marginIncomeEmp: Int,
-                  override val marginIncomeAgr: Int) :
-    PropsBase(version), IPropsHealth {
+                  _minMonthlyBasis: Int,
+                  _maxAnnualsBasis: Int,
+                  _limMonthlyState: Int,
+                  _limMonthlyDis50: Int,
+                  _factorCompound: BigDecimal,
+                  _factorEmployee: BigDecimal,
+                  _marginIncomeEmp: Int,
+                  _marginIncomeAgr: Int) :
+    PropsHealthBase(version,
+        _minMonthlyBasis,
+        _maxAnnualsBasis,
+        _limMonthlyState,
+        _limMonthlyDis50,
+        _factorCompound,
+        _factorEmployee,
+        _marginIncomeEmp,
+        _marginIncomeAgr), IPropsHealth {
 
     constructor(version: Int) : this(
         VersionId.get(version),

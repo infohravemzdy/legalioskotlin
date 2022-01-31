@@ -1,4 +1,4 @@
-package org.hravemzdy.legalios.factories
+package org.hravemzdy.legalios.service.types
 
 import org.hravemzdy.legalios.interfaces.*
 import org.hravemzdy.legalios.props.PropsHealth

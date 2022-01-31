@@ -14,12 +14,14 @@ interface IPropsTaxing : IProps {
    val factorAdvances: BigDecimal
    val factorWithhold: BigDecimal
    val factorSolitary: BigDecimal
+   val factorTaxRate2: BigDecimal
    val minAmountOfTaxBonus: Int
    val maxAmountOfTaxBonus: Int
    val marginIncomeOfTaxBonus: Int
    val marginIncomeOfRounding: Int
    val marginIncomeOfWithhold: Int
    val marginIncomeOfSolitary: Int
+   val marginIncomeOfTaxRate2: Int
    val marginIncomeOfWthEmp: Int
    val marginIncomeOfWthAgr: Int
 }

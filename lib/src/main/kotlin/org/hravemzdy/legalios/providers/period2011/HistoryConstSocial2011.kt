@@ -1,5 +1,6 @@
 package org.hravemzdy.legalios.providers.period2011
 
+import org.hravemzdy.legalios.providers.Period2010.HistoryConstSocial2010
 import java.math.BigDecimal
 
 // MAX_ANNUALS_BASIS            Maximální roční vyměřovací základ na jednoho pracovníka (tzv.strop)
@@ -22,11 +23,11 @@ object HistoryConstSocial2011 {
     const val VERSION_CODE:Int = 2011
 
     const val MAX_ANNUALS_BASIS:Int = 1781280
-    val FACTOR_EMPLOYER: BigDecimal = BigDecimal("25")
+    val FACTOR_EMPLOYER:BigDecimal = HistoryConstSocial2010.FACTOR_EMPLOYER
     val FACTOR_EMPLOYER_HIGHER:BigDecimal = BigDecimal("26")
-    val FACTOR_EMPLOYEE:BigDecimal = BigDecimal("6.5")
-    val FACTOR_EMPLOYEE_REDUCE:BigDecimal = BigDecimal.ZERO
-    val FACTOR_EMPLOYEE_GARANT:BigDecimal = BigDecimal.ZERO
-    const val MARGIN_INCOME_EMP:Int = 2000
-    const val MARGIN_INCOME_AGR:Int = MARGIN_INCOME_EMP
+    val FACTOR_EMPLOYEE:BigDecimal = HistoryConstSocial2010.FACTOR_EMPLOYEE
+    val FACTOR_EMPLOYEE_REDUCE:BigDecimal = HistoryConstSocial2010.FACTOR_EMPLOYEE_REDUCE
+    val FACTOR_EMPLOYEE_GARANT:BigDecimal = HistoryConstSocial2010.FACTOR_EMPLOYEE_GARANT
+    const val MARGIN_INCOME_EMP:Int = HistoryConstSocial2010.MARGIN_INCOME_EMP
+    const val MARGIN_INCOME_AGR:Int = HistoryConstSocial2010.MARGIN_INCOME_AGR
 }

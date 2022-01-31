@@ -1,18 +1,32 @@
 package org.hravemzdy.legalios.service
 
 import com.github.michaelbull.result.*
+import org.hravemzdy.legalios.TestDecParams
+import org.hravemzdy.legalios.TestDecScenario
 import org.hravemzdy.legalios.service.errors.HistoryResultError
 import org.hravemzdy.legalios.interfaces.IBundleProps
 import org.hravemzdy.legalios.interfaces.IPropsHealth
 import org.hravemzdy.legalios.service.types.Period
-import org.hravemzdy.legalios.service.ServiceLegalios
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
-import java.math.BigDecimal
 import kotlin.test.assertEquals
 
 class Service_Legalios_Example_01_Health_05_FactorCompoundTest  : Spek({
     val testList = listOf(
+        TestDecScenario("2010", listOf(
+            TestDecParams( "2010-1", 2010, 1, 2010, 1, 13.50 ),
+            TestDecParams( "2010-2", 2010, 2, 2010, 2, 13.50 ),
+            TestDecParams( "2010-3", 2010, 3, 2010, 3, 13.50 ),
+            TestDecParams( "2010-4", 2010, 4, 2010, 4, 13.50 ),
+            TestDecParams( "2010-5", 2010, 5, 2010, 5, 13.50 ),
+            TestDecParams( "2010-6", 2010, 6, 2010, 6, 13.50 ),
+            TestDecParams( "2010-7", 2010, 7, 2010, 7, 13.50 ),
+            TestDecParams( "2010-8", 2010, 8, 2010, 8, 13.50 ),
+            TestDecParams( "2010-9", 2010, 9, 2010, 9, 13.50 ),
+            TestDecParams( "2010-10", 2010, 10, 2010, 10, 13.50 ),
+            TestDecParams( "2010-11", 2010, 11, 2010, 11, 13.50 ),
+            TestDecParams( "2010-12", 2010, 12, 2010, 12, 13.50 ),
+        )),
         TestDecScenario("2011", listOf(
             TestDecParams( "2011-1", 2011, 1, 2011, 1, 13.50 ),
             TestDecParams( "2011-2", 2011, 2, 2011, 2, 13.50 ),

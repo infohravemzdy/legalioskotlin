@@ -5,15 +5,23 @@ import org.hravemzdy.legalios.service.types.VersionId
 import java.math.BigDecimal
 
 class PropsSocial(version: VersionId,
-                  override val maxAnnualsBasis: Int,
-                  override val factorEmployer: BigDecimal,
-                  override val factorEmployerHigher: BigDecimal,
-                  override val factorEmployee: BigDecimal,
-                  override val factorEmployeeGarant: BigDecimal,
-                  override val factorEmployeeReduce: BigDecimal,
-                  override val marginIncomeEmp: Int,
-                  override val marginIncomeAgr: Int) :
-    PropsBase(version), IPropsSocial {
+                  _maxAnnualsBasis: Int,
+                  _factorEmployer: BigDecimal,
+                  _factorEmployerHigher: BigDecimal,
+                  _factorEmployee: BigDecimal,
+                  _factorEmployeeGarant: BigDecimal,
+                  _factorEmployeeReduce: BigDecimal,
+                  _marginIncomeEmp: Int,
+                  _marginIncomeAgr: Int) :
+    PropsSocialBase(version,
+        _maxAnnualsBasis,
+        _factorEmployer,
+        _factorEmployerHigher,
+        _factorEmployee,
+        _factorEmployeeGarant,
+        _factorEmployeeReduce,
+        _marginIncomeEmp,
+        _marginIncomeAgr), IPropsSocial {
 
     constructor(version: Int) : this(
         VersionId.get(version),

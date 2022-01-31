@@ -2,6 +2,8 @@ package org.hravemzdy.legalios.service
 
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
+import org.hravemzdy.legalios.TestDecScenario
+import org.hravemzdy.legalios.TestIntScenario
 import org.hravemzdy.legalios.service.errors.HistoryResultError
 import org.hravemzdy.legalios.interfaces.IBundleProps
 import java.io.File
@@ -56,28 +58,6 @@ fun logTestEnd(protokol: FileWriter) {
 }
 
 
-data class TestIntParams(val title: String, val year: Int, val month: Int, val expYear: Int, val expMonth: Int, val expected: Int) {
-    fun testBasicResult(test: Suite, result: Result<IBundleProps, HistoryResultError>, bundle: IBundleProps?, props: IProps?, error: HistoryResultError?) {
-        test.it("GetProps should return error = null") {
-            assertTrue(error == null)
-        }
-        test.it("GetProps should return result = success") {
-            assertTrue(result is Ok<IBundleProps>)
-        }
-        test.it("GetProps should return props not be nil") {
-            assertNotNull(bundle == null)
-        }
-        test.it("GetProps should return getPeriodYear = ${expYear} and getPeriodMonth = ${expMonth}") {
-            assertEquals(expYear, bundle?.getPeriodYear())
-            assertEquals(expMonth, bundle?.getPeriodMonth())
-        }
-        test.it("GetProps should return healthProps not to be nil") {
-            assertNotNull(props)
-        }
-    }
-}
-data class TestIntScenario(val title: String, val tests: List<TestIntParams>)
-
 fun logExampleIntValue(protokol: FileWriter, value: Int) {
     protokol.write("\t$value")
 }
@@ -99,32 +79,6 @@ fun logTestIntExamples(fileName : String, tests: List<TestIntScenario>) {
         }
     }
 }
-
-data class TestDecParams(val title: String, val year: Int, val month: Int, val expYear: Int, val expMonth: Int, val expected: Double) {
-    fun testBasicResult(test: Suite, result: Result<IBundleProps, HistoryResultError>, bundle: IBundleProps?, props: IProps?, error: HistoryResultError?) {
-        test.it("GetProps should return error = null") {
-            assertTrue(error == null)
-        }
-        test.it("GetProps should return result = success") {
-            assertTrue(result is Ok<IBundleProps>)
-        }
-        test.it("GetProps should return props not be nil") {
-            assertNotNull(bundle == null)
-        }
-        test.it("GetProps should return getPeriodYear = ${expYear} and getPeriodMonth = ${expMonth}") {
-            assertEquals(expYear, bundle?.getPeriodYear())
-            assertEquals(expMonth, bundle?.getPeriodMonth())
-        }
-        test.it("GetProps should return healthProps not to be nil") {
-            assertNotNull(props)
-        }
-    }
-    fun expectedDec(): BigDecimal {
-        val intValue: Int = (expected*100).roundToInt()
-        return BigDecimal(intValue).divide(BigDecimal(100))
-    }
-}
-data class TestDecScenario(val title: String, val tests: List<TestDecParams>)
 
 fun logExampleDecValue(protokol: FileWriter, value: Double) {
     val intValue: Int = (value*100).roundToInt()

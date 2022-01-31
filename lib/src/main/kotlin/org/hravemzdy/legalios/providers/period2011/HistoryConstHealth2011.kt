@@ -1,5 +1,6 @@
 package org.hravemzdy.legalios.providers.period2011
 
+import org.hravemzdy.legalios.providers.Period2010.HistoryConstHealth2010
 import java.math.BigDecimal
 
 // MIN_MONTHLY_BASIS     Minimální základ zdravotního pojištění na jednoho pracovníka
@@ -23,12 +24,12 @@ object HistoryConstHealth2011 {
 
     const val MIN_MONTHLY_BASIS:Int = HistoryConstSalary2011.MIN_MONTHLY_WAGE
     const val MAX_ANNUALS_BASIS:Int = 1781280
-    const val LIM_MONTHLY_STATE:Int = 0
-    const val LIM_MONTHLY_DIS50:Int = 5355
-    val FACTOR_COMPOUND:BigDecimal = BigDecimal("13.5")
-    val FACTOR_EMPLOYEE:BigDecimal = BigDecimal("3")
-    const val MARGIN_INCOME_EMP:Int = 2000
-    const val MARGIN_INCOME_AGR:Int = MARGIN_INCOME_EMP
+    const val LIM_MONTHLY_STATE:Int = HistoryConstHealth2010.LIM_MONTHLY_STATE
+    const val LIM_MONTHLY_DIS50:Int = HistoryConstHealth2010.LIM_MONTHLY_DIS50
+    val FACTOR_COMPOUND:BigDecimal = HistoryConstHealth2010.FACTOR_COMPOUND
+    val FACTOR_EMPLOYEE:BigDecimal = HistoryConstHealth2010.FACTOR_EMPLOYEE
+    const val MARGIN_INCOME_EMP:Int = HistoryConstHealth2010.MARGIN_INCOME_EMP
+    const val MARGIN_INCOME_AGR:Int = HistoryConstHealth2010.MARGIN_INCOME_AGR
 
 }
 

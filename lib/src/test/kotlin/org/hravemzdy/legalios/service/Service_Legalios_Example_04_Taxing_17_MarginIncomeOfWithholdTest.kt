@@ -1,17 +1,32 @@
 package org.hravemzdy.legalios.service
 
 import com.github.michaelbull.result.*
+import org.hravemzdy.legalios.TestIntParams
+import org.hravemzdy.legalios.TestIntScenario
 import org.hravemzdy.legalios.service.errors.HistoryResultError
 import org.hravemzdy.legalios.interfaces.IBundleProps
 import org.hravemzdy.legalios.interfaces.IPropsTaxing
 import org.hravemzdy.legalios.service.types.Period
-import org.hravemzdy.legalios.service.ServiceLegalios
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.test.assertEquals
 
-class Service_Legalios_Example_04_Taxing_16_MarginIncomeOfWithholdTest  : Spek({
+class Service_Legalios_Example_04_Taxing_17_MarginIncomeOfWithholdTest  : Spek({
     val testList = listOf(
+        TestIntScenario("2010", listOf(
+            TestIntParams( "2010-1", 2010, 1, 2010, 1, 5000 ),
+            TestIntParams( "2010-2", 2010, 2, 2010, 2, 5000 ),
+            TestIntParams( "2010-3", 2010, 3, 2010, 3, 5000 ),
+            TestIntParams( "2010-4", 2010, 4, 2010, 4, 5000 ),
+            TestIntParams( "2010-5", 2010, 5, 2010, 5, 5000 ),
+            TestIntParams( "2010-6", 2010, 6, 2010, 6, 5000 ),
+            TestIntParams( "2010-7", 2010, 7, 2010, 7, 5000 ),
+            TestIntParams( "2010-8", 2010, 8, 2010, 8, 5000 ),
+            TestIntParams( "2010-9", 2010, 9, 2010, 9, 5000 ),
+            TestIntParams( "2010-10", 2010, 10, 2010, 10, 5000 ),
+            TestIntParams( "2010-11", 2010, 11, 2010, 11, 5000 ),
+            TestIntParams( "2010-12", 2010, 12, 2010, 12, 5000 ),
+        )),
         TestIntScenario("2011", listOf(
             TestIntParams( "2011-1", 2011, 1, 2011, 1, 5000 ),
             TestIntParams( "2011-2", 2011, 2, 2011, 2, 5000 ),
@@ -182,7 +197,7 @@ class Service_Legalios_Example_04_Taxing_16_MarginIncomeOfWithholdTest  : Spek({
         )),
     )
     // 04_Taxing_16_MarginIncomeOfWithhold
-    logTestIntExamples("04_Taxing_16_MarginIncomeOfWithhold.txt", testList)
+    logTestIntExamples("04_Taxing_17_MarginIncomeOfWithhold.txt", testList)
 
     testList.forEach { tx ->
         describe("year ${tx.title}") {
