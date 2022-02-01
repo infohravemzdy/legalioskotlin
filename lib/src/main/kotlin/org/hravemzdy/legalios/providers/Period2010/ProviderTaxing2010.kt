@@ -5,12 +5,13 @@ import org.hravemzdy.legalios.providers.IProviderTaxing
 import org.hravemzdy.legalios.interfaces.IPropsTaxing
 import org.hravemzdy.legalios.interfaces.IPeriod
 import org.hravemzdy.legalios.props.PropsTaxing
+import org.hravemzdy.legalios.props.PropsTaxing2010
 import java.math.BigDecimal
 
 class ProviderTaxing2010 : ProviderBase(HistoryConstTaxing2010.VERSION_CODE), IProviderTaxing {
 
     override fun getProps(period: IPeriod): IPropsTaxing {
-        return PropsTaxing(
+        return PropsTaxing2010(
             version,
             allowancePayer(period),
             allowanceDisab1st(period),
@@ -22,14 +23,14 @@ class ProviderTaxing2010 : ProviderBase(HistoryConstTaxing2010.VERSION_CODE), IP
             allowanceChild3rd(period),
             factorAdvances(period),
             factorWithhold(period),
-            factorSolitary(period),
+            factorSolidary(period),
             factorTaxRate2(period),
             minAmountOfTaxBonus(period),
             maxAmountOfTaxBonus(period),
             marginIncomeOfTaxBonus(period),
             marginIncomeOfRounding(period),
             marginIncomeOfWithhold(period),
-            marginIncomeOfSolitary(period),
+            marginIncomeOfSolidary(period),
             marginIncomeOfTaxRate2(period),
             marginIncomeOfWthEmp(period),
             marginIncomeOfWthAgr(period))
@@ -75,8 +76,8 @@ class ProviderTaxing2010 : ProviderBase(HistoryConstTaxing2010.VERSION_CODE), IP
         return HistoryConstTaxing2010.FACTOR_WITHHOLD
     }
 
-    override fun factorSolitary(period: IPeriod): BigDecimal {
-        return HistoryConstTaxing2010.FACTOR_SOLITARY
+    override fun factorSolidary(period: IPeriod): BigDecimal {
+        return HistoryConstTaxing2010.FACTOR_SOLIDARY
     }
 
     override fun factorTaxRate2(period: IPeriod): BigDecimal {
@@ -103,8 +104,8 @@ class ProviderTaxing2010 : ProviderBase(HistoryConstTaxing2010.VERSION_CODE), IP
         return HistoryConstTaxing2010.MARGIN_INCOME_OF_WITHHOLD
     }
 
-    override fun marginIncomeOfSolitary(period: IPeriod): Int {
-        return HistoryConstTaxing2010.MARGIN_INCOME_OF_SOLITARY
+    override fun marginIncomeOfSolidary(period: IPeriod): Int {
+        return HistoryConstTaxing2010.MARGIN_INCOME_OF_SOLIDARY
     }
 
     override fun marginIncomeOfTaxRate2(period: IPeriod): Int {

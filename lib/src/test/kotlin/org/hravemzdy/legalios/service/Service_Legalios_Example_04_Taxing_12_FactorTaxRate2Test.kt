@@ -196,7 +196,7 @@ class Service_Legalios_Example_04_Taxing_12_FactorTaxRate2Test : Spek({
             TestDecParams( "2022-12", 2022, 12, 2022, 12, 0.0 ),
         )),
     )
-    // 04_Taxing_11_FactorSolitary
+    // 04_Taxing_11_FactorSolidary
     logTestDecExamples("04_Taxing_12_FactorTaxRate2.txt", testList)
 
     testList.forEach { tx ->

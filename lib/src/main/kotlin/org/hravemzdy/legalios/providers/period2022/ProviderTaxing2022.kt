@@ -23,14 +23,14 @@ class ProviderTaxing2022 : ProviderBase(HistoryConstTaxing2022.VERSION_CODE), IP
             allowanceChild3rd(period),
             factorAdvances(period),
             factorWithhold(period),
-            factorSolitary(period),
+            factorSolidary(period),
             factorTaxRate2(period),
             minAmountOfTaxBonus(period),
             maxAmountOfTaxBonus(period),
             marginIncomeOfTaxBonus(period),
             marginIncomeOfRounding(period),
             marginIncomeOfWithhold(period),
-            marginIncomeOfSolitary(period),
+            marginIncomeOfSolidary(period),
             marginIncomeOfTaxRate2(period),
             marginIncomeOfWthEmp(period),
             marginIncomeOfWthAgr(period))
@@ -76,8 +76,8 @@ class ProviderTaxing2022 : ProviderBase(HistoryConstTaxing2022.VERSION_CODE), IP
         return HistoryConstTaxing2022.FACTOR_WITHHOLD
     }
 
-    override fun factorSolitary(period: IPeriod): BigDecimal {
-        return HistoryConstTaxing2022.FACTOR_SOLITARY
+    override fun factorSolidary(period: IPeriod): BigDecimal {
+        return HistoryConstTaxing2022.FACTOR_SOLIDARY
     }
 
     override fun factorTaxRate2(period: IPeriod): BigDecimal {
@@ -104,8 +104,8 @@ class ProviderTaxing2022 : ProviderBase(HistoryConstTaxing2022.VERSION_CODE), IP
         return HistoryConstTaxing2022.MARGIN_INCOME_OF_WITHHOLD
     }
 
-    override fun marginIncomeOfSolitary(period: IPeriod): Int {
-        return HistoryConstTaxing2022.MARGIN_INCOME_OF_SOLITARY
+    override fun marginIncomeOfSolidary(period: IPeriod): Int {
+        return HistoryConstTaxing2022.MARGIN_INCOME_OF_SOLIDARY
     }
 
     override fun marginIncomeOfTaxRate2(period: IPeriod): Int {

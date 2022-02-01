@@ -196,7 +196,7 @@ class Service_Legalios_Example_04_Taxing_19_MarginIncomeOfTaxRate2Test : Spek({
             TestIntParams( "2022-12", 2022, 12, 2022, 12, 155644 ),
         )),
     )
-    // 04_Taxing_17_MarginIncomeOfSolitary
+    // 04_Taxing_17_MarginIncomeOfSolidary
     logTestIntExamples("04_Taxing_19_MarginIncomeOfTaxRate2.txt", testList)
 
     testList.forEach { tx ->

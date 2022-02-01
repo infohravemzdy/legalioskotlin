@@ -5,6 +5,7 @@ import org.hravemzdy.legalios.providers.IProviderHealth
 import org.hravemzdy.legalios.interfaces.IPropsHealth
 import org.hravemzdy.legalios.interfaces.IPeriod
 import org.hravemzdy.legalios.props.PropsHealth
+import org.hravemzdy.legalios.props.PropsHealth2014
 import java.math.BigDecimal
 
 class ProviderHealth2015 : ProviderBase(HistoryConstHealth2015.VERSION_CODE), IProviderHealth {

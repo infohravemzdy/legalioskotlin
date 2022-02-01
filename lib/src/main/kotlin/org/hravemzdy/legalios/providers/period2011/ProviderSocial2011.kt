@@ -5,12 +5,13 @@ import org.hravemzdy.legalios.providers.IProviderSocial
 import org.hravemzdy.legalios.interfaces.IPropsSocial
 import org.hravemzdy.legalios.interfaces.IPeriod
 import org.hravemzdy.legalios.props.PropsSocial
+import org.hravemzdy.legalios.props.PropsSocial2010
 import java.math.BigDecimal
 
 class ProviderSocial2011 : ProviderBase(HistoryConstSocial2011.VERSION_CODE), IProviderSocial {
 
     override fun getProps(period: IPeriod): IPropsSocial {
-        return PropsSocial(
+        return PropsSocial2010(
             version,
             maxAnnualsBasis(period),
             factorEmployer(period),

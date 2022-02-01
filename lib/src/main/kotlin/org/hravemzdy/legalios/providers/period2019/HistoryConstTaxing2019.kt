@@ -24,7 +24,7 @@ import java.math.BigDecimal
 //
 // FACTOR_WITHHOLD                  Sazba daně na srážkový příjem
 //
-// FACTOR_SOLITARY                  Sazba daně na solidární zvýšení
+// FACTOR_SOLIDARY                  Sazba daně na solidární zvýšení
 //
 // FACTOR_TAXRATE2                  Sazba daně pro druhé pásmo daně
 //
@@ -40,7 +40,7 @@ import java.math.BigDecimal
 //
 // MARGIN_INCOME_OF_TAXRATE2        Minimální výše příjmu pro druhé pásmo daně
 //
-// MARGIN_INCOME_OF_SOLITARY        Minimální výše příjmu pro solidární zvýšení daně
+// MARGIN_INCOME_OF_SOLIDARY        Minimální výše příjmu pro solidární zvýšení daně
 //
 // MARGIN_INCOME_OF_WHT_AGR         hranice příjmu pro srážkovou daň pro zaměstnace v pracovním poměru (nepodepsal prohlášení)
 //
@@ -63,14 +63,14 @@ object HistoryConstTaxing2019 {
     const val ALLOWANCE_CHILD_3RD:Int = HistoryConstTaxing2018.ALLOWANCE_CHILD_3RD
     val FACTOR_ADVANCES:BigDecimal = HistoryConstTaxing2018.FACTOR_ADVANCES
     val FACTOR_WITHHOLD:BigDecimal = HistoryConstTaxing2018.FACTOR_WITHHOLD
-    val FACTOR_SOLITARY:BigDecimal = HistoryConstTaxing2018.FACTOR_SOLITARY
+    val FACTOR_SOLIDARY:BigDecimal = HistoryConstTaxing2018.FACTOR_SOLIDARY
     val FACTOR_TAXRATE2:BigDecimal = HistoryConstTaxing2018.FACTOR_TAXRATE2
     const val MIN_AMOUNT_OF_TAXBONUS:Int = HistoryConstTaxing2018.MIN_AMOUNT_OF_TAXBONUS
     const val MAX_AMOUNT_OF_TAXBONUS:Int = HistoryConstTaxing2018.MAX_AMOUNT_OF_TAXBONUS
     const val MARGIN_INCOME_OF_TAXBONUS:Int = (HistoryConstSalary2019.MIN_MONTHLY_WAGE / 2)
     const val MARGIN_INCOME_OF_ROUNDING:Int = HistoryConstTaxing2018.MARGIN_INCOME_OF_ROUNDING
     const val MARGIN_INCOME_OF_WITHHOLD:Int = HistoryConstTaxing2018.MARGIN_INCOME_OF_WITHHOLD
-    const val MARGIN_INCOME_OF_SOLITARY:Int = (4 * 32699)
+    const val MARGIN_INCOME_OF_SOLIDARY:Int = (4 * 32699)
     const val MARGIN_INCOME_OF_TAXRATE2:Int = HistoryConstTaxing2018.MARGIN_INCOME_OF_TAXRATE2
     const val MARGIN_INCOME_OF_WHT_EMP:Int = HistoryConstTaxing2018.MARGIN_INCOME_OF_WHT_EMP
     const val MARGIN_INCOME_OF_WHT_AGR:Int = HistoryConstTaxing2018.MARGIN_INCOME_OF_WHT_AGR

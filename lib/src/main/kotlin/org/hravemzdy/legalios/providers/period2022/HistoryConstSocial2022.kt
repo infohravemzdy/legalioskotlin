@@ -22,7 +22,7 @@ import java.math.BigDecimal
 object HistoryConstSocial2022 {
     const val VERSION_CODE:Int = 2022
 
-    const val MAX_ANNUALS_BASIS:Int = HistoryConstSocial2021.MAX_ANNUALS_BASIS
+    const val MAX_ANNUALS_BASIS:Int = 1867728
     val FACTOR_EMPLOYER:BigDecimal = HistoryConstSocial2021.FACTOR_EMPLOYER
     val FACTOR_EMPLOYER_HIGHER:BigDecimal = HistoryConstSocial2021.FACTOR_EMPLOYER_HIGHER
     val FACTOR_EMPLOYEE:BigDecimal = HistoryConstSocial2021.FACTOR_EMPLOYEE

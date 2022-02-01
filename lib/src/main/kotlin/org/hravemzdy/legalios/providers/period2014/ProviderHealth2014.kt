@@ -5,13 +5,14 @@ import org.hravemzdy.legalios.providers.IProviderHealth
 import org.hravemzdy.legalios.interfaces.IPropsHealth
 import org.hravemzdy.legalios.interfaces.IPeriod
 import org.hravemzdy.legalios.props.PropsHealth
+import org.hravemzdy.legalios.props.PropsHealth2014
 import org.hravemzdy.legalios.providers.period2013.HistoryConstHealth2013var08
 import java.math.BigDecimal
 
 class ProviderHealth2014 : ProviderBase(HistoryConstHealth2014.VERSION_CODE), IProviderHealth {
 
     override fun getProps(period: IPeriod): IPropsHealth {
-        return PropsHealth(
+        return PropsHealth2014(
             version,
             minMonthlyBasis(period),
             maxAnnualsBasis(period),

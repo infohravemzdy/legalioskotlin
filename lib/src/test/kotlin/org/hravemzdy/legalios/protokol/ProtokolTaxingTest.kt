@@ -147,17 +147,17 @@ class ProtokolTaxingTest : Spek({
             }
         }
     }
-    // 04_Taxing_11_FactorSolitary
-    describe("GetProps_ShouldExport_FactorSolitary") {
+    // 04_Taxing_11_FactorSolidary
+    describe("GetProps_ShouldExport_FactorSolidary") {
         listOf(
             TestIntScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
 
-                ExportPropsDecFile("04_Taxing_11_FactorSolitary.txt",
+                ExportPropsDecFile("04_Taxing_11_FactorSolidary.txt",
                     tt.minYear, tt.maxYear, factory)
-                    { prop -> prop.factorSolitary }
+                    { prop -> prop.factorSolidary }
             }
         }
     }
@@ -231,17 +231,17 @@ class ProtokolTaxingTest : Spek({
             }
         }
     }
-    // 04_Taxing_17_MarginIncomeOfSolitary
-    describe("GetProps_ShouldExport_MarginIncomeOfSolitary") {
+    // 04_Taxing_17_MarginIncomeOfSolidary
+    describe("GetProps_ShouldExport_MarginIncomeOfSolidary") {
         listOf(
             TestIntScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
 
-                ExportPropsIntFile("04_Taxing_17_MarginIncomeOfSolitary.txt",
+                ExportPropsIntFile("04_Taxing_17_MarginIncomeOfSolidary.txt",
                     tt.minYear, tt.maxYear, factory)
-                    { prop -> prop.marginIncomeOfSolitary }
+                    { prop -> prop.marginIncomeOfSolidary }
             }
         }
     }

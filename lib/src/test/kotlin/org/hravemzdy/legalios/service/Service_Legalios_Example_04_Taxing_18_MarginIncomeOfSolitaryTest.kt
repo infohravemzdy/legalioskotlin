@@ -11,7 +11,7 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.test.assertEquals
 
-class Service_Legalios_Example_04_Taxing_18_MarginIncomeOfSolitaryTest  : Spek({
+class Service_Legalios_Example_04_Taxing_18_MarginIncomeOfSolidaryTest  : Spek({
     val testList = listOf(
         TestIntScenario("2010", listOf(
             TestIntParams( "2010-1", 2010, 1, 2010, 1, 0 ),
@@ -196,8 +196,8 @@ class Service_Legalios_Example_04_Taxing_18_MarginIncomeOfSolitaryTest  : Spek({
             TestIntParams( "2022-12", 2022, 12, 2022, 12, 0 ),
         )),
     )
-    // 04_Taxing_17_MarginIncomeOfSolitary
-    logTestIntExamples("04_Taxing_18_MarginIncomeOfSolitary.txt", testList)
+    // 04_Taxing_17_MarginIncomeOfSolidary
+    logTestIntExamples("04_Taxing_18_MarginIncomeOfSolidary.txt", testList)
 
     testList.forEach { tx ->
         describe("year ${tx.title}") {
@@ -214,7 +214,7 @@ class Service_Legalios_Example_04_Taxing_18_MarginIncomeOfSolitaryTest  : Spek({
                     tt.testBasicResult(this, result, bundle, props, error)
 
                     it("GetProps should return value = ${tt.expected}") {
-                        assertEquals(tt.expected, props?.marginIncomeOfSolitary)
+                        assertEquals(tt.expected, props?.marginIncomeOfSolidary)
                     }
                 }
             }

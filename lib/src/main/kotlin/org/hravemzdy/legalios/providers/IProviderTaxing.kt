@@ -15,14 +15,14 @@ interface IProviderTaxing : IPropsProvider<IPropsTaxing> {
     fun allowanceChild3rd(period: IPeriod): Int
     fun factorAdvances(period: IPeriod): BigDecimal
     fun factorWithhold(period: IPeriod): BigDecimal
-    fun factorSolitary(period: IPeriod): BigDecimal
+    fun factorSolidary(period: IPeriod): BigDecimal
     fun factorTaxRate2(period: IPeriod): BigDecimal
     fun minAmountOfTaxBonus(period: IPeriod): Int
     fun maxAmountOfTaxBonus(period: IPeriod): Int
     fun marginIncomeOfTaxBonus(period: IPeriod): Int
     fun marginIncomeOfRounding(period: IPeriod): Int
     fun marginIncomeOfWithhold(period: IPeriod): Int
-    fun marginIncomeOfSolitary(period: IPeriod): Int
+    fun marginIncomeOfSolidary(period: IPeriod): Int
     fun marginIncomeOfTaxRate2(period: IPeriod): Int
     fun marginIncomeOfWthEmp(period: IPeriod): Int
     fun marginIncomeOfWthAgr(period: IPeriod): Int

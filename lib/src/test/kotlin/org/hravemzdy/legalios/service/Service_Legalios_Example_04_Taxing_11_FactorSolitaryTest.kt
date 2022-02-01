@@ -11,7 +11,7 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.test.assertEquals
 
-class Service_Legalios_Example_04_Taxing_11_FactorSolitaryTest  : Spek({
+class Service_Legalios_Example_04_Taxing_11_FactorSolidaryTest  : Spek({
     val testList = listOf(
         TestDecScenario("2010", listOf(
             TestDecParams( "2010-1", 2010, 1, 2010, 1, 0.00 ),
@@ -196,8 +196,8 @@ class Service_Legalios_Example_04_Taxing_11_FactorSolitaryTest  : Spek({
             TestDecParams( "2022-12", 2022, 12, 2022, 12, 0.0 ),
         )),
     )
-    // 04_Taxing_11_FactorSolitary
-    logTestDecExamples("04_Taxing_11_FactorSolitary.txt", testList)
+    // 04_Taxing_11_FactorSolidary
+    logTestDecExamples("04_Taxing_11_FactorSolidary.txt", testList)
 
     testList.forEach { tx ->
         describe("year ${tx.title}") {
@@ -215,7 +215,7 @@ class Service_Legalios_Example_04_Taxing_11_FactorSolitaryTest  : Spek({
 
                     it("GetProps should return value = ${tt.expected}") {
                         val expDecimal = tt.expectedDec()
-                        assertEquals(expDecimal, props?.factorSolitary)
+                        assertEquals(expDecimal, props?.factorSolidary)
                     }
                 }
             }
