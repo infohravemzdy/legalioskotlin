@@ -5,12 +5,12 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolSocialTest : Spek({
-    data class TestIntScenario(val minYear: Int, val maxYear: Int)
+    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
 
     // 03_Social_01_MaxAnnualsBasis
     describe("GetProps_ShouldExport_MaxAnnualsBasis") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()
@@ -24,7 +24,7 @@ class ProtokolSocialTest : Spek({
     // 03_Social_02_FactorEmployer
     describe("GetProps_ShouldExport_FactorEmployer") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()
@@ -38,7 +38,7 @@ class ProtokolSocialTest : Spek({
     // 03_Social_03_FactorEmployerHigher
     describe("GetProps_ShouldExport_FactorEmployerHigher") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()
@@ -52,7 +52,7 @@ class ProtokolSocialTest : Spek({
     // 03_Social_04_FactorEmployee
     describe("GetProps_ShouldExport_FactorEmployee") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()
@@ -66,7 +66,7 @@ class ProtokolSocialTest : Spek({
     // 03_Social_05_FactorEmployeeGarant
     describe("GetProps_ShouldExport_FactorEmployeeGarant") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()
@@ -80,7 +80,7 @@ class ProtokolSocialTest : Spek({
     // 03_Social_06_FactorEmployeeReduce
     describe("GetProps_ShouldExport_FactorEmployeeReduce") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()
@@ -94,7 +94,7 @@ class ProtokolSocialTest : Spek({
     // 03_Social_07_MarginIncomeEmp
     describe("GetProps_ShouldExport_MarginIncomeEmp") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()
@@ -108,7 +108,7 @@ class ProtokolSocialTest : Spek({
     // 03_Social_08_MarginIncomeAgr
     describe("GetProps_ShouldExport_MarginIncomeAgr") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySocial()

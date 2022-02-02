@@ -5,12 +5,12 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolTaxingTest : Spek({
-    data class TestIntScenario(val minYear: Int, val maxYear: Int)
+    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
 
     // 04_Taxing_01_AllowancePayer
     describe("GetProps_ShouldExport_AllowancePayer") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -24,7 +24,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_02_AllowanceDisab1st
     describe("GetProps_ShouldExport_AllowanceDisab1st") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -38,7 +38,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_03_AllowanceDisab2nd
     describe("GetProps_ShouldExport_AllowanceDisab2nd") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -52,7 +52,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_04_AllowanceDisab3rd
     describe("GetProps_ShouldExport_AllowanceDisab3rd") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -66,7 +66,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_05_AllowanceStudy
     describe("GetProps_ShouldExport_AllowanceStudy") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -80,7 +80,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_06_AllowanceChild1st
     describe("GetProps_ShouldExport_AllowanceChild1st") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -94,7 +94,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_07_AllowanceChild2nd
     describe("GetProps_ShouldExport_AllowanceChild2nd") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -108,7 +108,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_08_AllowanceChild3rd
     describe("GetProps_ShouldExport_AllowanceChild3rd") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -122,7 +122,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_09_FactorAdvances
     describe("GetProps_ShouldExport_FactorAdvances") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -136,7 +136,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_10_FactorWithhold
     describe("GetProps_ShouldExport_FactorWithhold") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -150,7 +150,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_11_FactorSolidary
     describe("GetProps_ShouldExport_FactorSolidary") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -164,7 +164,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_12_MinAmountOfTaxBonus
     describe("GetProps_ShouldExport_MinAmountOfTaxBonus") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -178,7 +178,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_13_MaxAmountOfTaxBonus
     describe("GetProps_ShouldExport_MaxAmountOfTaxBonus") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -192,7 +192,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_14_MarginIncomeOfTaxBonus
     describe("GetProps_ShouldExport_MarginIncomeOfTaxBonus") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -206,7 +206,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_15_MarginIncomeOfRounding
     describe("GetProps_ShouldExport_MarginIncomeOfRounding") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -220,7 +220,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_16_MarginIncomeOfWithhold
     describe("GetProps_ShouldExport_MarginIncomeOfWithhold") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -234,7 +234,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_17_MarginIncomeOfSolidary
     describe("GetProps_ShouldExport_MarginIncomeOfSolidary") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -248,7 +248,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_18_MarginIncomeOfWthEmp
     describe("GetProps_ShouldExport_MarginIncomeOfWthEmp") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()
@@ -262,7 +262,7 @@ class ProtokolTaxingTest : Spek({
     // 04_Taxing_19_MarginIncomeOfWthAgr
     describe("GetProps_ShouldExport_MarginIncomeOfWthAgr") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryTaxing()

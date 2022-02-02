@@ -5,12 +5,12 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolSalaryTest : Spek({
-    data class TestIntScenario(val minYear: Int, val maxYear: Int)
+    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
 
     // 02_Salary_01_WorkingShiftWeek
     describe("GetProps_ShouldExport_WorkingShiftWeek") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySalary()
@@ -24,7 +24,7 @@ class ProtokolSalaryTest : Spek({
     // 02_Salary_02_WorkingShiftTime
     describe("GetProps_ShouldExport_WorkingShiftTime") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySalary()
@@ -38,7 +38,7 @@ class ProtokolSalaryTest : Spek({
     // 02_Salary_03_MinMonthlyWage
     describe("GetProps_ShouldExport_MinMonthlyWage") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySalary()
@@ -52,7 +52,7 @@ class ProtokolSalaryTest : Spek({
     // 02_Salary_04_MinHourlyWage
     describe("GetProps_ShouldExport_MinHourlyWage") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactorySalary()

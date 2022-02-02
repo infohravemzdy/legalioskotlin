@@ -28,21 +28,12 @@ interface IPropsTaxing : IProps {
    val marginIncomeOfWthAgr: Int
 
    fun valueEquals(other: IPropsTaxing?): Boolean
-   fun hasWithholdIncome(
-      termOpt: WorkTaxingTerms,
-      signOpt: TaxDeclSignOption, noneOpt: TaxNoneSignOption, incomeSum: Int
-   ): Boolean
-
+   fun hasWithholdIncome(termOpt: WorkTaxingTerms,
+      signOpt: TaxDeclSignOption, noneOpt: TaxNoneSignOption, incomeSum: Int): Boolean
    fun benefitAllowancePayer(signOpts: TaxDeclSignOption, benefitOpts: TaxDeclBenfOption): Int
    fun benefitAllowanceDisab(signOpts: TaxDeclSignOption, benefitOpts: TaxDeclDisabOption): Int
    fun benefitAllowanceStudy(signOpts: TaxDeclSignOption, benefitOpts: TaxDeclBenfOption): Int
-   fun benefitAllowanceChild(
-      signOpts: TaxDeclSignOption,
-      benefitOpts: TaxDeclBenfOption,
-      benefitOrds: Int,
-      disabelOpts: Int
-   ): Int
-
+   fun benefitAllowanceChild(signOpts: TaxDeclSignOption, benefitOpts: TaxDeclBenfOption, benefitOrds: Int, disabelOpts: Int): Int
    fun bonusChildRaw(income: Int, benefit: Int, rebated: Int): Int
    fun bonusChildFix(income: Int, benefit: Int, rebated: Int): Int
    fun taxableIncomeSupers(incomeResult: Int, healthResult: Int, socialResult: Int): Int

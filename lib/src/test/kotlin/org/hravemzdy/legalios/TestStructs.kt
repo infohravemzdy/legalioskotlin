@@ -55,7 +55,7 @@ data class TestDecParams(val title: String, val year: Int, val month: Int, val e
     }
     fun expectedDec(): BigDecimal {
         val intValue: Int = (expected*100).roundToInt()
-        return BigDecimal(intValue).divide(BigDecimal(100))
+        return intValue.toBigDecimal().divide(100.toBigDecimal())
     }
 }
 data class TestDecScenario(val title: String, val tests: List<TestDecParams>)

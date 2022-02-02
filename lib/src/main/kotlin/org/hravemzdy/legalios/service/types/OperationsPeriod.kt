@@ -77,7 +77,7 @@ object OperationsPeriod {
 
         if (dateFrom != null)
         {
-            dayTermFrom = dateFrom?.dayOfMonth
+            dayTermFrom = dateFrom.dayOfMonth
         }
 
         if (dateFrom == null || dateFrom < periodDateBeg)
@@ -96,7 +96,7 @@ object OperationsPeriod {
 
         if (dateEnds != null)
         {
-            dayTermEnd = dateEnds?.dayOfMonth
+            dayTermEnd = dateEnds.dayOfMonth
         }
 
         if (dateEnds == null || dateEnds > periodDateEnd)

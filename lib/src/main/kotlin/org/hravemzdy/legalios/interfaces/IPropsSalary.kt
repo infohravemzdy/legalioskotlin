@@ -8,60 +8,28 @@ interface IPropsSalary : IProps {
     val minMonthlyWage : Int
     val minHourlyWage : Int
 
-    fun valueEquals(other: IPropsSalary): Boolean
+    fun valueEquals(other: IPropsSalary?): Boolean
     fun coeffWithPartAndFullHours(fullWorkHours: BigDecimal, partWorkHours: BigDecimal): BigDecimal
-    fun paymentWithMonthlyAndFullWeekAndFullAndWorkHours(
-        amountMonthly: BigDecimal,
-        fullWeekHours: Int, partWeekHours: Int,
-        fullWorkHours: Int, partWorkHours: Int
-    ): BigDecimal
-
-    fun paymentRoundUpWithMonthlyAndFullWeekAndFullAndWorkHours(
-        amountMonthly: BigDecimal,
-        fullWeekHours: Int, partWeekHours: Int,
-        fullWorkHours: Int, partWorkHours: Int
-    ): BigDecimal
-
-    fun paymentWithMonthlyAndCoeffAndFullAndWorkHours(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, fullWorkHours: Int, partWorkHours: Int
-    ): BigDecimal
-
-    fun paymentRoundUpWithMonthlyAndCoeffAndFullAndWorkHours(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, fullWorkHours: Int, partWorkHours: Int
-    ): BigDecimal
-
-    fun relativeAmountWithMonthlyAndCoeffAndWorkCoeff(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, workingCoeff: BigDecimal
-    ): BigDecimal
-
-    fun relativeTariffWithMonthlyAndCoeffAndWorkCoeff(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, workingCoeff: BigDecimal
-    ): BigDecimal
-
-    fun relativePaymentWithMonthlyAndCoeffAndWorkCoeff(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, workingCoeff: BigDecimal
-    ): BigDecimal
-
-    fun reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, workingCoeff: BigDecimal
-    ): BigDecimal
-
-    fun reverzedTariffWithMonthlyAndCoeffAndWorkCoeff(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, workingCoeff: BigDecimal
-    ): BigDecimal
-
-    fun reverzedPaymentWithMonthlyAndCoeffAndWorkCoeff(
-        amountMonthly: BigDecimal,
-        monthlyCoeff: BigDecimal, workingCoeff: BigDecimal
-    ): BigDecimal
-
+    fun paymentWithMonthlyAndFullWeekAndFullAndWorkHours(amountMonthly: BigDecimal,
+                                                         fullWeekHours: Int, partWeekHours: Int,
+                                                         fullWorkHours: Int, partWorkHours: Int): BigDecimal
+    fun paymentRoundUpWithMonthlyAndFullWeekAndFullAndWorkHours(amountMonthly: BigDecimal,
+                                                                fullWeekHours: Int, partWeekHours: Int,
+                                                                fullWorkHours: Int, partWorkHours: Int): BigDecimal
+    fun paymentWithMonthlyAndCoeffAndFullAndWorkHours(amountMonthly: BigDecimal,
+                                                      monthlyCoeff: BigDecimal, fullWorkHours: Int, partWorkHours: Int): BigDecimal
+    fun paymentRoundUpWithMonthlyAndCoeffAndFullAndWorkHours(amountMonthly: BigDecimal,
+                                                             monthlyCoeff: BigDecimal, fullWorkHours: Int, partWorkHours: Int): BigDecimal
+    fun paymentWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal,
+                                               monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
+    fun paymentRoundUpWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal,
+                                                      monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
+    fun relativeAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
+    fun relativeTariffWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
+    fun relativePaymentWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
+    fun reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
+    fun reverzedTariffWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
+    fun reverzedPaymentWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal
     fun paymentWithTariffAndHours(tariffHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal
     fun paymentRoundUpWithTariffAndHours(tariffHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal
     fun tariffWithPaymentAndHours(amountHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal

@@ -1,7 +1,7 @@
 package org.hravemzdy.legalios.props
 
 import org.hravemzdy.legalios.interfaces.IPropsTaxing
-import org.hravemzdy.legalios.service.types.VersionId
+import org.hravemzdy.legalios.service.types.*
 import java.math.BigDecimal
 
 class PropsTaxing2018(version: VersionId,
@@ -72,6 +72,70 @@ class PropsTaxing2018(version: VersionId,
         0,
         0,
         0)
+
+    override fun hasWithholdIncome(termOpt: WorkTaxingTerms, signOpt: TaxDeclSignOption, noneOpt: TaxNoneSignOption, incomeSum: Int): Boolean {
+        //*****************************************************************************
+        // Tax income for advance from Year 2014 to Year 2017
+        //*****************************************************************************
+        // - withhold tax (non-signed declaration) and income
+        // if (period.Year >= 2018)
+        // -- income from DPP is less than X CZK
+        // -- income from low-income employment is less than X CZK
+        // -- income from statutory employment and non-resident is always withhold tax
+
+        var withholdIncome: Boolean = false
+        if (signOpt != TaxDeclSignOption.DECL_TAX_NO_SIGNED)
+        {
+            return withholdIncome
+        }
+        if (noneOpt != TaxNoneSignOption.NOSIGN_TAX_WITHHOLD)
+        {
+            return withholdIncome
+        }
+        if (termOpt == WorkTaxingTerms.TAXING_TERM_AGREEM_TASK)
+        {
+            if (marginIncomeOfWthAgr == 0 || incomeSum <= marginIncomeOfWthAgr)
+            {
+                if (incomeSum > 0)
+                {
+                    withholdIncome = true
+                }
+            }
+        }
+        else if (termOpt == WorkTaxingTerms.TAXING_TERM_EMPLOYMENTS)
+        {
+            if (marginIncomeOfWthEmp == 0 || incomeSum <= marginIncomeOfWthEmp)
+            {
+                if (incomeSum > 0)
+                {
+                    withholdIncome = true
+                }
+            }
+        }
+        else if (termOpt == WorkTaxingTerms.TAXING_TERM_STATUT_PART)
+        {
+            if (incomeSum > 0)
+            {
+                withholdIncome = true
+            }
+        }
+        return withholdIncome
+    }
+    override fun roundedAdvancesPaym(supersResult: Int, basisResult: Int): Int {
+        val factorAdvances = OperationsDec.divide(factorAdvances, 100.toBigDecimal())
+
+        var advanceTaxing: Int = 0
+        if (basisResult <= marginIncomeOfRounding)
+        {
+            advanceTaxing = intTaxRoundUp(OperationsDec.multiply(supersResult.toBigDecimal(), factorAdvances))
+        }
+        else
+        {
+            advanceTaxing = intTaxRoundUp(OperationsDec.multiply(supersResult.toBigDecimal(), factorAdvances))
+        }
+
+        return advanceTaxing
+    }
 
     companion object {
         fun empty(): IPropsTaxing {

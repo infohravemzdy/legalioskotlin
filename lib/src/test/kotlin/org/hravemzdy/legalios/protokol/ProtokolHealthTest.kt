@@ -5,12 +5,12 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolHealthTest  : Spek({
-    data class TestIntScenario(val minYear: Int, val maxYear: Int)
+    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
 
     // 01_Health_01_MinMonthlyBasis
     describe("GetProps_ShouldExport_MinMonthlyBasis") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()
@@ -25,7 +25,7 @@ class ProtokolHealthTest  : Spek({
     // 01_Health_02_MaxAnnualsBasis
     describe("GetProps_ShouldExport_MaxAnnualsBasis") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()
@@ -40,7 +40,7 @@ class ProtokolHealthTest  : Spek({
     // 01_Health_03_LimMonthlyState
     describe("GetProps_ShouldExport_LimMonthlyState") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()
@@ -55,7 +55,7 @@ class ProtokolHealthTest  : Spek({
     // 01_Health_04_LimMonthlyDis50
     describe("GetProps_ShouldExport_LimMonthlyDis50") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()
@@ -70,7 +70,7 @@ class ProtokolHealthTest  : Spek({
     // 01_Health_05_FactorCompound
     describe("GetProps_ShouldExport_FactorCompound") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()
@@ -85,7 +85,7 @@ class ProtokolHealthTest  : Spek({
     // 01_Health_06_FactorEmployee
     describe("GetProps_ShouldExport_FactorEmployee") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()
@@ -100,7 +100,7 @@ class ProtokolHealthTest  : Spek({
     // 01_Health_07_MarginIncomeEmp
     describe("GetProps_ShouldExport_MarginIncomeEmp") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()
@@ -115,7 +115,7 @@ class ProtokolHealthTest  : Spek({
     // 01_Health_08_MarginIncomeAgr
     describe("GetProps_ShouldExport_MarginIncomeAgr") {
         listOf(
-            TestIntScenario(2010, 2022),
+            TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 val factory = FactoryHealth()

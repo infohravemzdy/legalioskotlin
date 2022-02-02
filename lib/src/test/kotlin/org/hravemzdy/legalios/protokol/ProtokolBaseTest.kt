@@ -75,7 +75,7 @@ fun <B : IPropsProvider<P>, P : IProps>exportPropsDecLine(protokol: FileWriter, 
 }
 
 fun exportPropsValue(protokol: FileWriter, value: BigDecimal) {
-    val intValue: Int = (value*BigDecimal(100)).toInt()
+    val intValue: Int = (value*100.toBigDecimal()).toInt()
     protokol.write("\t$intValue")
 }
 

@@ -1,8 +1,10 @@
 package org.hravemzdy.legalios.props
 
 import org.hravemzdy.legalios.interfaces.IPropsTaxing
-import org.hravemzdy.legalios.service.types.VersionId
+import org.hravemzdy.legalios.service.types.*
 import java.math.BigDecimal
+import kotlin.math.max
+import kotlin.math.min
 
 class PropsTaxing2010(version: VersionId,
                       _allowancePayer: Int,
@@ -72,6 +74,44 @@ class PropsTaxing2010(version: VersionId,
         0,
         0,
         0)
+
+    override fun hasWithholdIncome(termOpt: WorkTaxingTerms, signOpt: TaxDeclSignOption, noneOpt: TaxNoneSignOption, incomeSum: Int): Boolean {
+        //*****************************************************************************
+        // Tax income for advance from Year 2008 to Year 2013
+        //*****************************************************************************
+        // - withhold tax (non-signed declaration) and income is less than X CZK
+        //*****************************************************************************
+
+        var withholdIncome: Boolean = false
+        if (signOpt != TaxDeclSignOption.DECL_TAX_NO_SIGNED)
+        {
+            return withholdIncome
+        }
+        if (noneOpt != TaxNoneSignOption.NOSIGN_TAX_WITHHOLD)
+        {
+            return withholdIncome
+        }
+        if (marginIncomeOfWithhold == 0 || incomeSum <= marginIncomeOfWithhold)
+        {
+            withholdIncome = true;
+        }
+        return withholdIncome
+    }
+    override fun roundedAdvancesPaym(supersResult: Int, basisResult: Int): Int {
+        val factorAdvances = OperationsDec.divide(factorAdvances, 100.toBigDecimal())
+
+        var advanceTaxing: Int = 0
+        if (basisResult <= marginIncomeOfRounding)
+        {
+            advanceTaxing = intTaxRoundUp(OperationsDec.multiply(supersResult.toBigDecimal(), factorAdvances))
+        }
+        else
+        {
+            advanceTaxing = intTaxRoundUp(OperationsDec.multiply(supersResult.toBigDecimal(), factorAdvances))
+        }
+
+        return advanceTaxing
+    }
 
     companion object {
         fun empty(): IPropsTaxing {
