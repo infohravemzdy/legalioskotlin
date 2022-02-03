@@ -197,7 +197,7 @@ class Service_Legalios_Example_04_Taxing_20_MarginIncomeOfWthEmpTest  : Spek({
         )),
     )
     // 04_Taxing_18_MarginIncomeOfWthEmp
-    logTestIntExamples("04_Taxing_18_MarginIncomeOfWthEmp.txt", testList)
+    logTestIntExamples("04_Taxing_20_MarginIncomeOfWthEmp.txt", testList)
 
     testList.forEach { tx ->
         describe("year ${tx.title}") {

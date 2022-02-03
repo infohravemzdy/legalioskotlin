@@ -15,7 +15,7 @@ class ProtokolSalaryTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySalary()
 
-                ExportPropsIntFile("02_Salary_01_WorkingShiftWeek.txt",
+                exportPropsIntFile("02_Salary_01_WorkingShiftWeek.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.workingShiftWeek }
             }
@@ -29,7 +29,7 @@ class ProtokolSalaryTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySalary()
 
-                ExportPropsIntFile("02_Salary_02_WorkingShiftTime.txt",
+                exportPropsIntFile("02_Salary_02_WorkingShiftTime.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.workingShiftTime }
             }
@@ -43,7 +43,7 @@ class ProtokolSalaryTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySalary()
 
-                ExportPropsIntFile("02_Salary_03_MinMonthlyWage.txt",
+                exportPropsIntFile("02_Salary_03_MinMonthlyWage.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.minMonthlyWage }
             }
@@ -57,7 +57,7 @@ class ProtokolSalaryTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySalary()
 
-                ExportPropsIntFile("02_Salary_04_MinHourlyWage.txt",
+                exportPropsIntFile("02_Salary_04_MinHourlyWage.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.minHourlyWage }
             }

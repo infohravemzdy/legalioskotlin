@@ -28,5 +28,5 @@ object HistoryConstSocial2010 {
     val FACTOR_EMPLOYEE_REDUCE:BigDecimal = BigDecimal.ZERO
     val FACTOR_EMPLOYEE_GARANT:BigDecimal = BigDecimal.ZERO
     const val MARGIN_INCOME_EMP:Int = 2000
-    const val MARGIN_INCOME_AGR:Int = MARGIN_INCOME_EMP
+    const val MARGIN_INCOME_AGR:Int = 0
 }

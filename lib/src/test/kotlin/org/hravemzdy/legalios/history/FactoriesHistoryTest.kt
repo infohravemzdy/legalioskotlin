@@ -9,8 +9,14 @@ import org.hravemzdy.legalios.protokol.*
 import org.hravemzdy.legalios.service.types.Period
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
+import java.io.File
 import java.io.FileWriter
 import java.math.BigDecimal
+import java.nio.file.Paths
+
+const val HISTORY_TEST_FOLDER = "../../../test_history";
+const val HISTORY_FOLDER_NAME = "test_history"
+const val PARENT_HISTORY_FOLDER_NAME = "legalios"
 
 class FactoriesHistoryTest() : Spek({
     data class TestYearsScenario(val minYear: Int, val maxYear: Int)
@@ -20,19 +26,15 @@ class FactoriesHistoryTest() : Spek({
     val _sutSocial : IProviderFactory<IPropsSocial> = FactorySocial()
     val _sutTaxing : IProviderFactory<IPropsTaxing> = FactoryTaxing()
 
-    val HISTORY_TEST_FOLDER = "../../../test_history";
-
     describe("GetProps_ShouldExport_History") {
         listOf(
             TestYearsScenario(2010, 2022),
         ).forEach { tt ->
             it("GetProps should export values") {
                 if (__test_protokol_file__) {
-                    var testProtokol = createProtokolFile("history_${tt.minYear}_${tt.maxYear}.xls")
+                    var testProtokol = createHistoryFile("history_${tt.minYear}_${tt.maxYear}.xls")
 
                     testProtokol.use {
-                        exportPropsStart(testProtokol)
-
                         var headerData = emptyList<Pair<Int, Boolean>>()
                         for (testYear in tt.minYear..tt.maxYear) {
                             var yearWithChanges = false
@@ -78,49 +80,49 @@ class FactoriesHistoryTest() : Spek({
                         }
                         exportHistoryStart(testProtokol, headerData);
 
-                        var VECT_HEALTH_MIN_MONTHLY_BASIS = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_HEALTH_MAX_ANNUALS_BASIS = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_HEALTH_LIM_MONTHLY_STATE = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_HEALTH_LIM_MONTHLY_DIS50 = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_HEALTH_FACTOR_COMPOUND = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_HEALTH_FACTOR_EMPLOYEE = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_HEALTH_MARGIN_INCOME_EMP = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_HEALTH_MARGIN_INCOME_AGR = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SALARY_WORKING_SHIFT_WEEK = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SALARY_WORKING_SHIFT_TIME = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SALARY_MIN_MONTHLY_WAGE = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SALARY_MIN_HOURLY_WAGE = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_MAX_ANNUALS_BASIS = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_FACTOR_EMPLOYER = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_FACTOR_EMPLOYER_HIGHER = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_FACTOR_EMPLOYEE = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_FACTOR_EMPLOYEE_GARANT = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_FACTOR_EMPLOYEE_REDUCE = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_MARGIN_INCOME_EMP = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_SOCIAL_MARGIN_INCOME_AGR = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_PAYER = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_DISAB_1ST = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_DISAB_2ND = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_DISAB_3RD = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_STUDY = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_CHILD_1ST = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_CHILD_2ND = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_ALLOWANCE_CHILD_3RD = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_FACTOR_ADVANCES = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_FACTOR_WITHHOLD = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_FACTOR_SOLIDARY = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_FACTOR_TAXRATE2 = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MIN_AMOUNT_OF_TAXBONUS = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MAX_AMOUNT_OF_TAXBONUS = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MARGIN_INCOME_OF_TAXBONUS = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MARGIN_INCOME_OF_ROUNDING = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MARGIN_INCOME_OF_WITHHOLD = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MARGIN_INCOME_OF_SOLIDARY = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MARGIN_INCOME_OF_TAXRATE2 = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
-                        var VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR = emptyList<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_MIN_MONTHLY_BASIS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_MAX_ANNUALS_BASIS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_LIM_MONTHLY_STATE = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_LIM_MONTHLY_DIS50 = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_FACTOR_COMPOUND = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_FACTOR_EMPLOYEE = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_MARGIN_INCOME_EMP = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_HEALTH_MARGIN_INCOME_AGR = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SALARY_WORKING_SHIFT_WEEK = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SALARY_WORKING_SHIFT_TIME = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SALARY_MIN_MONTHLY_WAGE = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SALARY_MIN_HOURLY_WAGE = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_MAX_ANNUALS_BASIS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_FACTOR_EMPLOYER = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_FACTOR_EMPLOYER_HIGHER = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_FACTOR_EMPLOYEE = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_FACTOR_EMPLOYEE_GARANT = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_FACTOR_EMPLOYEE_REDUCE = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_MARGIN_INCOME_EMP = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_SOCIAL_MARGIN_INCOME_AGR = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_PAYER = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_DISAB_1ST = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_DISAB_2ND = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_DISAB_3RD = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_STUDY = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_CHILD_1ST = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_CHILD_2ND = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_ALLOWANCE_CHILD_3RD = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_FACTOR_ADVANCES = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_FACTOR_WITHHOLD = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_FACTOR_SOLIDARY = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_FACTOR_TAXRATE2 = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MIN_AMOUNT_OF_TAXBONUS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MAX_AMOUNT_OF_TAXBONUS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MARGIN_INCOME_OF_TAXBONUS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MARGIN_INCOME_OF_ROUNDING = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MARGIN_INCOME_OF_WITHHOLD = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MARGIN_INCOME_OF_SOLIDARY = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MARGIN_INCOME_OF_TAXRATE2 = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
+                        var VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
 
-                        val tableData = listOf(
+                        val tableData = mutableListOf(
                             Pair(HEALTH_MIN_MONTHLY_BASIS         , VECT_HEALTH_MIN_MONTHLY_BASIS),
                             Pair(HEALTH_MAX_ANNUALS_BASIS         , VECT_HEALTH_MAX_ANNUALS_BASIS),
                             Pair(HEALTH_LIM_MONTHLY_STATE         , VECT_HEALTH_LIM_MONTHLY_STATE),
@@ -313,47 +315,47 @@ class FactoriesHistoryTest() : Spek({
                                 testTaxingProp = testTaxingNext;
                             }
 
-                            VECT_HEALTH_MIN_MONTHLY_BASIS = VECT_HEALTH_MIN_MONTHLY_BASIS.plus(Pair(Pair(testYear, MES_HEALTH_MIN_MONTHLY_BASIS), Pair(JAN_HEALTH_MIN_MONTHLY_BASIS, propsValueToString(testHealthProp.minMonthlyBasis))))
-                            VECT_HEALTH_MAX_ANNUALS_BASIS = VECT_HEALTH_MAX_ANNUALS_BASIS.plus(Pair(Pair(testYear, MES_HEALTH_MAX_ANNUALS_BASIS), Pair(JAN_HEALTH_MAX_ANNUALS_BASIS, propsValueToString(testHealthProp.maxAnnualsBasis))))
-                            VECT_HEALTH_LIM_MONTHLY_STATE = VECT_HEALTH_LIM_MONTHLY_STATE.plus(Pair(Pair(testYear, MES_HEALTH_LIM_MONTHLY_STATE), Pair(JAN_HEALTH_LIM_MONTHLY_STATE, propsValueToString(testHealthProp.limMonthlyState))))
-                            VECT_HEALTH_LIM_MONTHLY_DIS50 = VECT_HEALTH_LIM_MONTHLY_DIS50.plus(Pair(Pair(testYear, MES_HEALTH_LIM_MONTHLY_DIS50), Pair(JAN_HEALTH_LIM_MONTHLY_DIS50, propsValueToString(testHealthProp.limMonthlyDis50))))
-                            VECT_HEALTH_FACTOR_COMPOUND = VECT_HEALTH_FACTOR_COMPOUND.plus(Pair(Pair(testYear, MES_HEALTH_FACTOR_COMPOUND), Pair(JAN_HEALTH_FACTOR_COMPOUND, propsValueToString(testHealthProp.factorCompound))))
-                            VECT_HEALTH_FACTOR_EMPLOYEE = VECT_HEALTH_FACTOR_EMPLOYEE.plus(Pair(Pair(testYear, MES_HEALTH_FACTOR_EMPLOYEE), Pair(JAN_HEALTH_FACTOR_EMPLOYEE, propsValueToString(testHealthProp.factorEmployee))))
-                            VECT_HEALTH_MARGIN_INCOME_EMP = VECT_HEALTH_MARGIN_INCOME_EMP.plus(Pair(Pair(testYear, MES_HEALTH_MARGIN_INCOME_EMP), Pair(JAN_HEALTH_MARGIN_INCOME_EMP, propsValueToString(testHealthProp.marginIncomeEmp))))
-                            VECT_HEALTH_MARGIN_INCOME_AGR = VECT_HEALTH_MARGIN_INCOME_AGR.plus(Pair(Pair(testYear, MES_HEALTH_MARGIN_INCOME_AGR), Pair(JAN_HEALTH_MARGIN_INCOME_AGR, propsValueToString(testHealthProp.marginIncomeAgr))))
-                            VECT_SALARY_WORKING_SHIFT_WEEK = VECT_SALARY_WORKING_SHIFT_WEEK.plus(Pair(Pair(testYear, MES_SALARY_WORKING_SHIFT_WEEK), Pair(JAN_SALARY_WORKING_SHIFT_WEEK, propsValueToString(testSalaryProp.workingShiftWeek))))
-                            VECT_SALARY_WORKING_SHIFT_TIME = VECT_SALARY_WORKING_SHIFT_TIME.plus(Pair(Pair(testYear, MES_SALARY_WORKING_SHIFT_TIME), Pair(JAN_SALARY_WORKING_SHIFT_TIME, propsValueToString(testSalaryProp.workingShiftTime))))
-                            VECT_SALARY_MIN_MONTHLY_WAGE = VECT_SALARY_MIN_MONTHLY_WAGE.plus(Pair(Pair(testYear, MES_SALARY_MIN_MONTHLY_WAGE), Pair(JAN_SALARY_MIN_MONTHLY_WAGE, propsValueToString(testSalaryProp.minMonthlyWage))))
-                            VECT_SALARY_MIN_HOURLY_WAGE = VECT_SALARY_MIN_HOURLY_WAGE.plus(Pair(Pair(testYear, MES_SALARY_MIN_HOURLY_WAGE), Pair(JAN_SALARY_MIN_HOURLY_WAGE, propsValueToString(testSalaryProp.minHourlyWage))))
-                            VECT_SOCIAL_MAX_ANNUALS_BASIS = VECT_SOCIAL_MAX_ANNUALS_BASIS.plus(Pair(Pair(testYear, MES_SOCIAL_MAX_ANNUALS_BASIS), Pair(JAN_SOCIAL_MAX_ANNUALS_BASIS, propsValueToString(testSocialProp.maxAnnualsBasis))))
-                            VECT_SOCIAL_FACTOR_EMPLOYER = VECT_SOCIAL_FACTOR_EMPLOYER.plus(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYER), Pair(JAN_SOCIAL_FACTOR_EMPLOYER, propsValueToString(testSocialProp.factorEmployer))))
-                            VECT_SOCIAL_FACTOR_EMPLOYER_HIGHER = VECT_SOCIAL_FACTOR_EMPLOYER_HIGHER.plus(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYER_HIGHER), Pair(JAN_SOCIAL_FACTOR_EMPLOYER_HIGHER, propsValueToString(testSocialProp.factorEmployerHigher))))
-                            VECT_SOCIAL_FACTOR_EMPLOYEE = VECT_SOCIAL_FACTOR_EMPLOYEE.plus(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYEE), Pair(JAN_SOCIAL_FACTOR_EMPLOYEE, propsValueToString(testSocialProp.factorEmployee))))
-                            VECT_SOCIAL_FACTOR_EMPLOYEE_GARANT = VECT_SOCIAL_FACTOR_EMPLOYEE_GARANT.plus(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYEE_GARANT), Pair(JAN_SOCIAL_FACTOR_EMPLOYEE_GARANT, propsValueToString(testSocialProp.factorEmployeeGarant))))
-                            VECT_SOCIAL_FACTOR_EMPLOYEE_REDUCE = VECT_SOCIAL_FACTOR_EMPLOYEE_REDUCE.plus(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYEE_REDUCE), Pair(JAN_SOCIAL_FACTOR_EMPLOYEE_REDUCE, propsValueToString(testSocialProp.factorEmployeeReduce))))
-                            VECT_SOCIAL_MARGIN_INCOME_EMP = VECT_SOCIAL_MARGIN_INCOME_EMP.plus(Pair(Pair(testYear, MES_SOCIAL_MARGIN_INCOME_EMP), Pair(JAN_SOCIAL_MARGIN_INCOME_EMP, propsValueToString(testSocialProp.marginIncomeEmp))))
-                            VECT_SOCIAL_MARGIN_INCOME_AGR = VECT_SOCIAL_MARGIN_INCOME_AGR.plus(Pair(Pair(testYear, MES_SOCIAL_MARGIN_INCOME_AGR), Pair(JAN_SOCIAL_MARGIN_INCOME_AGR, propsValueToString(testSocialProp.marginIncomeAgr))))
-                            VECT_TAXING_ALLOWANCE_PAYER = VECT_TAXING_ALLOWANCE_PAYER.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_PAYER), Pair(JAN_TAXING_ALLOWANCE_PAYER, propsValueToString(testTaxingProp.allowancePayer))))
-                            VECT_TAXING_ALLOWANCE_DISAB_1ST = VECT_TAXING_ALLOWANCE_DISAB_1ST.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_DISAB_1ST), Pair(JAN_TAXING_ALLOWANCE_DISAB_1ST, propsValueToString(testTaxingProp.allowanceDisab1st))))
-                            VECT_TAXING_ALLOWANCE_DISAB_2ND = VECT_TAXING_ALLOWANCE_DISAB_2ND.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_DISAB_2ND), Pair(JAN_TAXING_ALLOWANCE_DISAB_2ND, propsValueToString(testTaxingProp.allowanceDisab2nd))))
-                            VECT_TAXING_ALLOWANCE_DISAB_3RD = VECT_TAXING_ALLOWANCE_DISAB_3RD.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_DISAB_3RD), Pair(JAN_TAXING_ALLOWANCE_DISAB_3RD, propsValueToString(testTaxingProp.allowanceDisab3rd))))
-                            VECT_TAXING_ALLOWANCE_STUDY = VECT_TAXING_ALLOWANCE_STUDY.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_STUDY), Pair(JAN_TAXING_ALLOWANCE_STUDY, propsValueToString(testTaxingProp.allowanceStudy))))
-                            VECT_TAXING_ALLOWANCE_CHILD_1ST = VECT_TAXING_ALLOWANCE_CHILD_1ST.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_CHILD_1ST), Pair(JAN_TAXING_ALLOWANCE_CHILD_1ST, propsValueToString(testTaxingProp.allowanceChild1st))))
-                            VECT_TAXING_ALLOWANCE_CHILD_2ND = VECT_TAXING_ALLOWANCE_CHILD_2ND.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_CHILD_2ND), Pair(JAN_TAXING_ALLOWANCE_CHILD_2ND, propsValueToString(testTaxingProp.allowanceChild2nd))))
-                            VECT_TAXING_ALLOWANCE_CHILD_3RD = VECT_TAXING_ALLOWANCE_CHILD_3RD.plus(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_CHILD_3RD), Pair(JAN_TAXING_ALLOWANCE_CHILD_3RD, propsValueToString(testTaxingProp.allowanceChild3rd))))
-                            VECT_TAXING_FACTOR_ADVANCES = VECT_TAXING_FACTOR_ADVANCES.plus(Pair(Pair(testYear, MES_TAXING_FACTOR_ADVANCES), Pair(JAN_TAXING_FACTOR_ADVANCES, propsValueToString(testTaxingProp.factorAdvances))))
-                            VECT_TAXING_FACTOR_WITHHOLD = VECT_TAXING_FACTOR_WITHHOLD.plus(Pair(Pair(testYear, MES_TAXING_FACTOR_WITHHOLD), Pair(JAN_TAXING_FACTOR_WITHHOLD, propsValueToString(testTaxingProp.factorWithhold))))
-                            VECT_TAXING_FACTOR_SOLIDARY = VECT_TAXING_FACTOR_SOLIDARY.plus(Pair(Pair(testYear, MES_TAXING_FACTOR_SOLIDARY), Pair(JAN_TAXING_FACTOR_SOLIDARY, propsValueToString(testTaxingProp.factorSolidary))))
-                            VECT_TAXING_FACTOR_TAXRATE2 = VECT_TAXING_FACTOR_TAXRATE2.plus(Pair(Pair(testYear, MES_TAXING_FACTOR_TAXRATE2), Pair(JAN_TAXING_FACTOR_TAXRATE2, propsValueToString(testTaxingProp.factorTaxRate2))))
-                            VECT_TAXING_MIN_AMOUNT_OF_TAXBONUS = VECT_TAXING_MIN_AMOUNT_OF_TAXBONUS.plus(Pair(Pair(testYear, MES_TAXING_MIN_AMOUNT_OF_TAXBONUS), Pair(JAN_TAXING_MIN_AMOUNT_OF_TAXBONUS, propsValueToString(testTaxingProp.minAmountOfTaxBonus))))
-                            VECT_TAXING_MAX_AMOUNT_OF_TAXBONUS = VECT_TAXING_MAX_AMOUNT_OF_TAXBONUS.plus(Pair(Pair(testYear, MES_TAXING_MAX_AMOUNT_OF_TAXBONUS), Pair(JAN_TAXING_MAX_AMOUNT_OF_TAXBONUS, propsValueToString(testTaxingProp.maxAmountOfTaxBonus))))
-                            VECT_TAXING_MARGIN_INCOME_OF_TAXBONUS = VECT_TAXING_MARGIN_INCOME_OF_TAXBONUS.plus(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_TAXBONUS), Pair(JAN_TAXING_MARGIN_INCOME_OF_TAXBONUS, propsValueToString(testTaxingProp.marginIncomeOfTaxBonus))))
-                            VECT_TAXING_MARGIN_INCOME_OF_ROUNDING = VECT_TAXING_MARGIN_INCOME_OF_ROUNDING.plus(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_ROUNDING), Pair(JAN_TAXING_MARGIN_INCOME_OF_ROUNDING, propsValueToString(testTaxingProp.marginIncomeOfRounding))))
-                            VECT_TAXING_MARGIN_INCOME_OF_WITHHOLD = VECT_TAXING_MARGIN_INCOME_OF_WITHHOLD.plus(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WITHHOLD), Pair(JAN_TAXING_MARGIN_INCOME_OF_WITHHOLD, propsValueToString(testTaxingProp.marginIncomeOfWithhold))))
-                            VECT_TAXING_MARGIN_INCOME_OF_SOLIDARY = VECT_TAXING_MARGIN_INCOME_OF_SOLIDARY.plus(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_SOLIDARY), Pair(JAN_TAXING_MARGIN_INCOME_OF_SOLIDARY, propsValueToString(testTaxingProp.marginIncomeOfSolidary))))
-                            VECT_TAXING_MARGIN_INCOME_OF_TAXRATE2 = VECT_TAXING_MARGIN_INCOME_OF_TAXRATE2.plus(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_TAXRATE2), Pair(JAN_TAXING_MARGIN_INCOME_OF_TAXRATE2, propsValueToString(testTaxingProp.marginIncomeOfTaxRate2))))
-                            VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP = VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP.plus(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WHT_EMP), Pair(JAN_TAXING_MARGIN_INCOME_OF_WHT_EMP, propsValueToString(testTaxingProp.marginIncomeOfWthEmp))))
-                            VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR = VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR.plus(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WHT_AGR), Pair(JAN_TAXING_MARGIN_INCOME_OF_WHT_AGR, propsValueToString(testTaxingProp.marginIncomeOfWthAgr))))
+                            VECT_HEALTH_MIN_MONTHLY_BASIS.add(Pair(Pair(testYear, MES_HEALTH_MIN_MONTHLY_BASIS), Pair(JAN_HEALTH_MIN_MONTHLY_BASIS, propsValueToString(testHealthProp.minMonthlyBasis))))
+                            VECT_HEALTH_MAX_ANNUALS_BASIS.add(Pair(Pair(testYear, MES_HEALTH_MAX_ANNUALS_BASIS), Pair(JAN_HEALTH_MAX_ANNUALS_BASIS, propsValueToString(testHealthProp.maxAnnualsBasis))))
+                            VECT_HEALTH_LIM_MONTHLY_STATE.add(Pair(Pair(testYear, MES_HEALTH_LIM_MONTHLY_STATE), Pair(JAN_HEALTH_LIM_MONTHLY_STATE, propsValueToString(testHealthProp.limMonthlyState))))
+                            VECT_HEALTH_LIM_MONTHLY_DIS50.add(Pair(Pair(testYear, MES_HEALTH_LIM_MONTHLY_DIS50), Pair(JAN_HEALTH_LIM_MONTHLY_DIS50, propsValueToString(testHealthProp.limMonthlyDis50))))
+                            VECT_HEALTH_FACTOR_COMPOUND.add(Pair(Pair(testYear, MES_HEALTH_FACTOR_COMPOUND), Pair(JAN_HEALTH_FACTOR_COMPOUND, propsValueToString(testHealthProp.factorCompound))))
+                            VECT_HEALTH_FACTOR_EMPLOYEE.add(Pair(Pair(testYear, MES_HEALTH_FACTOR_EMPLOYEE), Pair(JAN_HEALTH_FACTOR_EMPLOYEE, propsValueToString(testHealthProp.factorEmployee))))
+                            VECT_HEALTH_MARGIN_INCOME_EMP.add(Pair(Pair(testYear, MES_HEALTH_MARGIN_INCOME_EMP), Pair(JAN_HEALTH_MARGIN_INCOME_EMP, propsValueToString(testHealthProp.marginIncomeEmp))))
+                            VECT_HEALTH_MARGIN_INCOME_AGR.add(Pair(Pair(testYear, MES_HEALTH_MARGIN_INCOME_AGR), Pair(JAN_HEALTH_MARGIN_INCOME_AGR, propsValueToString(testHealthProp.marginIncomeAgr))))
+                            VECT_SALARY_WORKING_SHIFT_WEEK.add(Pair(Pair(testYear, MES_SALARY_WORKING_SHIFT_WEEK), Pair(JAN_SALARY_WORKING_SHIFT_WEEK, propsValueToString(testSalaryProp.workingShiftWeek))))
+                            VECT_SALARY_WORKING_SHIFT_TIME.add(Pair(Pair(testYear, MES_SALARY_WORKING_SHIFT_TIME), Pair(JAN_SALARY_WORKING_SHIFT_TIME, propsValueToString(testSalaryProp.workingShiftTime))))
+                            VECT_SALARY_MIN_MONTHLY_WAGE.add(Pair(Pair(testYear, MES_SALARY_MIN_MONTHLY_WAGE), Pair(JAN_SALARY_MIN_MONTHLY_WAGE, propsValueToString(testSalaryProp.minMonthlyWage))))
+                            VECT_SALARY_MIN_HOURLY_WAGE.add(Pair(Pair(testYear, MES_SALARY_MIN_HOURLY_WAGE), Pair(JAN_SALARY_MIN_HOURLY_WAGE, propsValueToString(testSalaryProp.minHourlyWage))))
+                            VECT_SOCIAL_MAX_ANNUALS_BASIS.add(Pair(Pair(testYear, MES_SOCIAL_MAX_ANNUALS_BASIS), Pair(JAN_SOCIAL_MAX_ANNUALS_BASIS, propsValueToString(testSocialProp.maxAnnualsBasis))))
+                            VECT_SOCIAL_FACTOR_EMPLOYER.add(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYER), Pair(JAN_SOCIAL_FACTOR_EMPLOYER, propsValueToString(testSocialProp.factorEmployer))))
+                            VECT_SOCIAL_FACTOR_EMPLOYER_HIGHER.add(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYER_HIGHER), Pair(JAN_SOCIAL_FACTOR_EMPLOYER_HIGHER, propsValueToString(testSocialProp.factorEmployerHigher))))
+                            VECT_SOCIAL_FACTOR_EMPLOYEE.add(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYEE), Pair(JAN_SOCIAL_FACTOR_EMPLOYEE, propsValueToString(testSocialProp.factorEmployee))))
+                            VECT_SOCIAL_FACTOR_EMPLOYEE_GARANT.add(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYEE_GARANT), Pair(JAN_SOCIAL_FACTOR_EMPLOYEE_GARANT, propsValueToString(testSocialProp.factorEmployeeGarant))))
+                            VECT_SOCIAL_FACTOR_EMPLOYEE_REDUCE.add(Pair(Pair(testYear, MES_SOCIAL_FACTOR_EMPLOYEE_REDUCE), Pair(JAN_SOCIAL_FACTOR_EMPLOYEE_REDUCE, propsValueToString(testSocialProp.factorEmployeeReduce))))
+                            VECT_SOCIAL_MARGIN_INCOME_EMP.add(Pair(Pair(testYear, MES_SOCIAL_MARGIN_INCOME_EMP), Pair(JAN_SOCIAL_MARGIN_INCOME_EMP, propsValueToString(testSocialProp.marginIncomeEmp))))
+                            VECT_SOCIAL_MARGIN_INCOME_AGR.add(Pair(Pair(testYear, MES_SOCIAL_MARGIN_INCOME_AGR), Pair(JAN_SOCIAL_MARGIN_INCOME_AGR, propsValueToString(testSocialProp.marginIncomeAgr))))
+                            VECT_TAXING_ALLOWANCE_PAYER.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_PAYER), Pair(JAN_TAXING_ALLOWANCE_PAYER, propsValueToString(testTaxingProp.allowancePayer))))
+                            VECT_TAXING_ALLOWANCE_DISAB_1ST.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_DISAB_1ST), Pair(JAN_TAXING_ALLOWANCE_DISAB_1ST, propsValueToString(testTaxingProp.allowanceDisab1st))))
+                            VECT_TAXING_ALLOWANCE_DISAB_2ND.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_DISAB_2ND), Pair(JAN_TAXING_ALLOWANCE_DISAB_2ND, propsValueToString(testTaxingProp.allowanceDisab2nd))))
+                            VECT_TAXING_ALLOWANCE_DISAB_3RD.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_DISAB_3RD), Pair(JAN_TAXING_ALLOWANCE_DISAB_3RD, propsValueToString(testTaxingProp.allowanceDisab3rd))))
+                            VECT_TAXING_ALLOWANCE_STUDY.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_STUDY), Pair(JAN_TAXING_ALLOWANCE_STUDY, propsValueToString(testTaxingProp.allowanceStudy))))
+                            VECT_TAXING_ALLOWANCE_CHILD_1ST.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_CHILD_1ST), Pair(JAN_TAXING_ALLOWANCE_CHILD_1ST, propsValueToString(testTaxingProp.allowanceChild1st))))
+                            VECT_TAXING_ALLOWANCE_CHILD_2ND.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_CHILD_2ND), Pair(JAN_TAXING_ALLOWANCE_CHILD_2ND, propsValueToString(testTaxingProp.allowanceChild2nd))))
+                            VECT_TAXING_ALLOWANCE_CHILD_3RD.add(Pair(Pair(testYear, MES_TAXING_ALLOWANCE_CHILD_3RD), Pair(JAN_TAXING_ALLOWANCE_CHILD_3RD, propsValueToString(testTaxingProp.allowanceChild3rd))))
+                            VECT_TAXING_FACTOR_ADVANCES.add(Pair(Pair(testYear, MES_TAXING_FACTOR_ADVANCES), Pair(JAN_TAXING_FACTOR_ADVANCES, propsValueToString(testTaxingProp.factorAdvances))))
+                            VECT_TAXING_FACTOR_WITHHOLD.add(Pair(Pair(testYear, MES_TAXING_FACTOR_WITHHOLD), Pair(JAN_TAXING_FACTOR_WITHHOLD, propsValueToString(testTaxingProp.factorWithhold))))
+                            VECT_TAXING_FACTOR_SOLIDARY.add(Pair(Pair(testYear, MES_TAXING_FACTOR_SOLIDARY), Pair(JAN_TAXING_FACTOR_SOLIDARY, propsValueToString(testTaxingProp.factorSolidary))))
+                            VECT_TAXING_FACTOR_TAXRATE2.add(Pair(Pair(testYear, MES_TAXING_FACTOR_TAXRATE2), Pair(JAN_TAXING_FACTOR_TAXRATE2, propsValueToString(testTaxingProp.factorTaxRate2))))
+                            VECT_TAXING_MIN_AMOUNT_OF_TAXBONUS.add(Pair(Pair(testYear, MES_TAXING_MIN_AMOUNT_OF_TAXBONUS), Pair(JAN_TAXING_MIN_AMOUNT_OF_TAXBONUS, propsValueToString(testTaxingProp.minAmountOfTaxBonus))))
+                            VECT_TAXING_MAX_AMOUNT_OF_TAXBONUS.add(Pair(Pair(testYear, MES_TAXING_MAX_AMOUNT_OF_TAXBONUS), Pair(JAN_TAXING_MAX_AMOUNT_OF_TAXBONUS, propsValueToString(testTaxingProp.maxAmountOfTaxBonus))))
+                            VECT_TAXING_MARGIN_INCOME_OF_TAXBONUS.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_TAXBONUS), Pair(JAN_TAXING_MARGIN_INCOME_OF_TAXBONUS, propsValueToString(testTaxingProp.marginIncomeOfTaxBonus))))
+                            VECT_TAXING_MARGIN_INCOME_OF_ROUNDING.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_ROUNDING), Pair(JAN_TAXING_MARGIN_INCOME_OF_ROUNDING, propsValueToString(testTaxingProp.marginIncomeOfRounding))))
+                            VECT_TAXING_MARGIN_INCOME_OF_WITHHOLD.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WITHHOLD), Pair(JAN_TAXING_MARGIN_INCOME_OF_WITHHOLD, propsValueToString(testTaxingProp.marginIncomeOfWithhold))))
+                            VECT_TAXING_MARGIN_INCOME_OF_SOLIDARY.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_SOLIDARY), Pair(JAN_TAXING_MARGIN_INCOME_OF_SOLIDARY, propsValueToString(testTaxingProp.marginIncomeOfSolidary))))
+                            VECT_TAXING_MARGIN_INCOME_OF_TAXRATE2.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_TAXRATE2), Pair(JAN_TAXING_MARGIN_INCOME_OF_TAXRATE2, propsValueToString(testTaxingProp.marginIncomeOfTaxRate2))))
+                            VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WHT_EMP), Pair(JAN_TAXING_MARGIN_INCOME_OF_WHT_EMP, propsValueToString(testTaxingProp.marginIncomeOfWthEmp))))
+                            VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WHT_AGR), Pair(JAN_TAXING_MARGIN_INCOME_OF_WHT_AGR, propsValueToString(testTaxingProp.marginIncomeOfWthAgr))))
                         }
 
                         for (data in tableData) {
@@ -411,6 +413,16 @@ val TAXING_MARGIN_INCOME_OF_TAXRATE2:Int = 419
 val TAXING_MARGIN_INCOME_OF_WHT_EMP :Int = 420
 val TAXING_MARGIN_INCOME_OF_WHT_AGR :Int = 421
 
+fun createHistoryFile(fileName : String): FileWriter {
+    var currPath = Paths.get(".").toAbsolutePath()
+    while (!currPath.endsWith(PARENT_HISTORY_FOLDER_NAME) || currPath.nameCount==1) {
+        currPath = currPath.parent
+    }
+    val basePath = Paths.get(currPath.toString(), HISTORY_FOLDER_NAME)
+    val path = Paths.get(basePath.toString(), fileName).toAbsolutePath().toString()
+    return FileWriter(File(path))
+}
+
 fun exportHistoryStart(protokol: FileWriter, data: Iterable<Pair<Int, Boolean>>) {
     protokol.write("History Term")
     for (col in data) {
@@ -428,8 +440,7 @@ fun exportHistoryStart(protokol: FileWriter, data: Iterable<Pair<Int, Boolean>>)
     protokol.write("\n")
 }
 
-fun exportHistoryTerm(protokol: FileWriter, head: Iterable<Pair<Int, Boolean>>, data: Pair<Int, List<Pair<Pair<Int, Int>, Pair<String, String>>>>): Unit
-{
+fun exportHistoryTerm(protokol: FileWriter, head: Iterable<Pair<Int, Boolean>>, data: Pair<Int, List<Pair<Pair<Int, Int>, Pair<String, String>>>>): Unit {
     protokol.write(historyTermName(data.first))
     for (col in data.second)
     {

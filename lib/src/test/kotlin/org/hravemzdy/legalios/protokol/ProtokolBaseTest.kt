@@ -15,7 +15,7 @@ const val PROTOKOL_FOLDER_PATH = "../../../test_values"
 const val PROTOKOL_FOLDER_NAME = "test_values"
 const val PARENT_PROTOKOL_FOLDER_NAME = "legalios"
 
-fun <B : IPropsProvider<P>, P : IProps>ExportPropsIntFile(fileName : String, minYear: Int, maxYear: Int, sut: IProviderFactory<P>, func: (P) -> Int) {
+fun <B : IPropsProvider<P>, P : IProps>exportPropsIntFile(fileName : String, minYear: Int, maxYear: Int, sut: IProviderFactory<P>, func: (P) -> Int) {
     if (__test_protokol_file__) {
         var testProtokol = createProtokolFile(fileName)
 
@@ -47,7 +47,7 @@ fun exportPropsValue(protokol: FileWriter, value: Int) {
     protokol.write("\t$value")
 }
 
-fun <B : IPropsProvider<P>, P : IProps>ExportPropsDecFile(fileName : String, minYear: Int, maxYear: Int, sut: IProviderFactory<P>, func: (P) -> BigDecimal) {
+fun <B : IPropsProvider<P>, P : IProps>exportPropsDecFile(fileName : String, minYear: Int, maxYear: Int, sut: IProviderFactory<P>, func: (P) -> BigDecimal) {
     if (__test_protokol_file__) {
         var testProtokol = createProtokolFile(fileName)
 

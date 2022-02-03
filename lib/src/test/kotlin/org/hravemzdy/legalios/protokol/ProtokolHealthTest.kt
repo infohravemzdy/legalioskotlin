@@ -15,7 +15,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsIntFile("01_Health_01_MinMonthlyBasis.txt",
+                exportPropsIntFile("01_Health_01_MinMonthlyBasis.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.minMonthlyBasis }
             }
@@ -30,7 +30,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsIntFile("01_Health_02_MaxAnnualsBasis.txt",
+                exportPropsIntFile("01_Health_02_MaxAnnualsBasis.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.maxAnnualsBasis }
             }
@@ -45,7 +45,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsIntFile("01_Health_03_LimMonthlyState.txt",
+                exportPropsIntFile("01_Health_03_LimMonthlyState.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.limMonthlyState }
             }
@@ -60,7 +60,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsIntFile("01_Health_04_LimMonthlyDis50.txt",
+                exportPropsIntFile("01_Health_04_LimMonthlyDis50.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.limMonthlyDis50 }
             }
@@ -75,7 +75,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsDecFile("01_Health_05_FactorCompound.txt",
+                exportPropsDecFile("01_Health_05_FactorCompound.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.factorCompound }
             }
@@ -90,7 +90,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsDecFile("01_Health_06_FactorEmployee.txt",
+                exportPropsDecFile("01_Health_06_FactorEmployee.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.factorEmployee }
             }
@@ -105,7 +105,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsIntFile("01_Health_07_MarginIncomeEmp.txt",
+                exportPropsIntFile("01_Health_07_MarginIncomeEmp.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.marginIncomeEmp }
             }
@@ -120,7 +120,7 @@ class ProtokolHealthTest  : Spek({
             it("GetProps should export values") {
                 val factory = FactoryHealth()
 
-                ExportPropsIntFile("01_Health_08_MarginIncomeAgr.txt",
+                exportPropsIntFile("01_Health_08_MarginIncomeAgr.txt",
                     tt.minYear, tt.maxYear, factory)
                     { prop -> prop.marginIncomeAgr }
             }

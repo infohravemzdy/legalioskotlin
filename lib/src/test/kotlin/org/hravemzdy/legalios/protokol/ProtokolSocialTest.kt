@@ -15,7 +15,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsIntFile("03_Social_01_MaxAnnualsBasis.txt",
+                exportPropsIntFile("03_Social_01_MaxAnnualsBasis.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.maxAnnualsBasis }
             }
@@ -29,7 +29,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsDecFile("03_Social_02_FactorEmployer.txt",
+                exportPropsDecFile("03_Social_02_FactorEmployer.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.factorEmployer }
             }
@@ -43,7 +43,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsDecFile("03_Social_03_FactorEmployerHigher.txt",
+                exportPropsDecFile("03_Social_03_FactorEmployerHigher.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.factorEmployerHigher }
             }
@@ -57,7 +57,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsDecFile("03_Social_04_FactorEmployee.txt",
+                exportPropsDecFile("03_Social_04_FactorEmployee.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.factorEmployee }
             }
@@ -71,7 +71,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsDecFile("03_Social_05_FactorEmployeeGarant.txt",
+                exportPropsDecFile("03_Social_05_FactorEmployeeGarant.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.factorEmployeeGarant }
             }
@@ -85,7 +85,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsDecFile("03_Social_06_FactorEmployeeReduce.txt",
+                exportPropsDecFile("03_Social_06_FactorEmployeeReduce.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.factorEmployeeReduce }
             }
@@ -99,7 +99,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsIntFile("03_Social_07_MarginIncomeEmp.txt",
+                exportPropsIntFile("03_Social_07_MarginIncomeEmp.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.marginIncomeEmp }
             }
@@ -113,7 +113,7 @@ class ProtokolSocialTest : Spek({
             it("GetProps should export values") {
                 val factory = FactorySocial()
 
-                ExportPropsIntFile("03_Social_08_MarginIncomeAgr.txt",
+                exportPropsIntFile("03_Social_08_MarginIncomeAgr.txt",
                     tt.minYear, tt.maxYear, factory)
                 { prop -> prop.marginIncomeAgr }
             }
