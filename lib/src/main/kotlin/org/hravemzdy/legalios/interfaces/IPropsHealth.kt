@@ -20,5 +20,5 @@ interface IPropsHealth : IProps {
     fun roundedAugmentEmployeePaym(basisGenerals: Int, basisAugment: Int): Int
     fun roundedAugmentEmployerPaym(basisGenerals: Int, baseEmployee: Int, baseEmployer: Int): Int
     fun roundedEmployerPaym(basisResult: Int): Int
-    fun annualsBasisCut(incomeList: Iterable<IParticyResult>, annuityBasis: Int): Triple<Int, Int, Iterable<IParticyResult>>
+    fun <T: IParticyResult>annualsBasisCut(particyList: Iterable<T>, incomeList: Iterable<T>, annuityBasis: Int): Triple<Int, Int, Iterable<T>>
 }

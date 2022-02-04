@@ -95,7 +95,7 @@ abstract class PropsSocialBase(version: VersionId,
         return Pair<Int, Int>(maxBaseEmployee, valBaseOvercaps)
     }
 
-    override fun annualsBasisCut(incomeList: Iterable<IParticyResult>, annuityBasis: Int): Triple<Int, Int, Iterable<IParticyResult>> {
-        return maximResultCut(incomeList, annuityBasis, maxAnnualsBasis)
+    override fun <T: IParticyResult>annualsBasisCut(particyList: Iterable<T>, incomeList: Iterable<T>, annuityBasis: Int): Triple<Int, Int, Iterable<T>> {
+        return maximResultCut(particyList, incomeList, annuityBasis, maxAnnualsBasis)
     }
 }

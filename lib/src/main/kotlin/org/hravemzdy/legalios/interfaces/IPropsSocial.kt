@@ -18,5 +18,5 @@ interface IPropsSocial : IProps {
     fun roundedEmployeePaym(basisResult: Int): Int
     fun roundedEmployerPaym(basisResult: Int): Int
     fun resultOvercaps(baseSuma: Int, overCaps: Int): Pair<Int, Int>
-    fun annualsBasisCut(incomeList: Iterable<IParticyResult>, annuityBasis: Int): Triple<Int, Int, Iterable<IParticyResult>>
+    fun <T: IParticyResult>annualsBasisCut(particyList: Iterable<T>, incomeList: Iterable<T>, annuityBasis: Int): Triple<Int, Int, Iterable<T>>
 }

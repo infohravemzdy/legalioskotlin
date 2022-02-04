@@ -10,9 +10,9 @@ abstract class PropsBase(override val version: VersionId) : IProps {
 
     fun isValid(): Boolean { return version.value != VERSION_ZERO }
 
-    fun maximResultCut(incomeList: Iterable<IParticyResult>, annuityBasis: Int, annualyMaxim: Int): Triple<Int, Int, Iterable<IParticyResult>> {
+    fun <T: IParticyResult>maximResultCut(particyList: Iterable<T>, incomeList: Iterable<T>, annuityBasis: Int, annualyMaxim: Int): Triple<Int, Int, Iterable<T>> {
         val annualsBasis = max(0, annualyMaxim - annuityBasis)
-        var resultInit = Triple<Int, Int, Iterable<IParticyResult>>(annualyMaxim, annualsBasis, emptyArray<IParticyResult>().toList());
+        var resultInit = Triple<Int, Int, Iterable<T>>(annualyMaxim, annualsBasis, particyList)
 
         var resultList = incomeList.fold(resultInit) { agr, x ->
             var cutAnnualsBasis: Int = 0
@@ -31,7 +31,7 @@ abstract class PropsBase(override val version: VersionId) : IProps {
             }
 
             x.setResultValue(max(0, cutAnnualsBasis))
-            return Triple<Int, Int, Iterable<IParticyResult>>(agr.first, remAnnualsBasis, agr.third.plus(x))
+            return Triple<Int, Int, Iterable<T>>(agr.first, remAnnualsBasis, agr.third.plus(x))
         }
 
         return resultList
