@@ -13,9 +13,9 @@ import org.hravemzdy.legalios.providers.period2011.HistoryConstSalary2011
 object HistoryConstSalary2012 {
     const val VERSION_CODE = 2012
 
-    const val WORKING_SHIFT_WEEK:Int = HistoryConstSalary2011.WORKING_SHIFT_WEEK;
-    const val WORKING_SHIFT_TIME:Int = HistoryConstSalary2011.WORKING_SHIFT_TIME;
-    const val MIN_MONTHLY_WAGE:Int = HistoryConstSalary2011.MIN_MONTHLY_WAGE;
-    const val MIN_HOURLY_WAGE:Int = HistoryConstSalary2011.MIN_HOURLY_WAGE;
+    const val WORKING_SHIFT_WEEK:Int = HistoryConstSalary2011.WORKING_SHIFT_WEEK
+    const val WORKING_SHIFT_TIME:Int = HistoryConstSalary2011.WORKING_SHIFT_TIME
+    const val MIN_MONTHLY_WAGE:Int = HistoryConstSalary2011.MIN_MONTHLY_WAGE
+    const val MIN_HOURLY_WAGE:Int = HistoryConstSalary2011.MIN_HOURLY_WAGE
 }
 

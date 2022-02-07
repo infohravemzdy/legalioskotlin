@@ -13,9 +13,9 @@ import org.hravemzdy.legalios.providers.period2018.HistoryConstSalary2018
 object HistoryConstSalary2019 {
     const val VERSION_CODE = 2019
 
-    const val WORKING_SHIFT_WEEK:Int = HistoryConstSalary2018.WORKING_SHIFT_WEEK;
-    const val WORKING_SHIFT_TIME:Int = HistoryConstSalary2018.WORKING_SHIFT_TIME;
-    const val MIN_MONTHLY_WAGE:Int = 13350;
-    const val MIN_HOURLY_WAGE:Int = 7980;
+    const val WORKING_SHIFT_WEEK:Int = HistoryConstSalary2018.WORKING_SHIFT_WEEK
+    const val WORKING_SHIFT_TIME:Int = HistoryConstSalary2018.WORKING_SHIFT_TIME
+    const val MIN_MONTHLY_WAGE:Int = 13350
+    const val MIN_HOURLY_WAGE:Int = 7980
 }
 

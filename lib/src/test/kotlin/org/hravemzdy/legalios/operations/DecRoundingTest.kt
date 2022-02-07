@@ -28,7 +28,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundUp(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -52,7 +54,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundDown(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -76,7 +80,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundNorm(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -100,7 +106,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decNearRoundUp(decimalTarget, 100)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -124,7 +132,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decNearRoundDown(decimalTarget, 100)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -198,7 +208,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundUp50(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -292,7 +304,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundUp25(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -326,7 +340,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundUp01(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -400,7 +416,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundDown50(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -494,7 +512,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundDown25(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -528,7 +548,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundDown01(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -602,7 +624,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundNorm50(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -696,7 +720,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundNorm25(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -730,7 +756,9 @@ class DecRoundingTest : Spek({
 
                 val decimalRounds = OperationsRound.decRoundNorm01(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }

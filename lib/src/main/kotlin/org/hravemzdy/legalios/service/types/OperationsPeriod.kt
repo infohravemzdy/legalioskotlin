@@ -68,7 +68,7 @@ object OperationsPeriod {
 
         val periodDateCwd = periodDate.dayOfWeek.value
 
-        return dayOfWeekMonToSun(periodDateCwd);
+        return dayOfWeekMonToSun(periodDateCwd)
     }
     fun dateFromInPeriod(period: IPeriod, dateFrom: LocalDate?): Int {
         var dayTermFrom = TERM_BEG_FINISHED
@@ -117,13 +117,13 @@ object OperationsPeriod {
     fun weekDaySeconds(dayOrdinal: Int, daysOfWork: Int, secondsDaily: Int, secRemainder: Int): Int {
         if (dayOrdinal < daysOfWork)
         {
-            return secondsDaily;
+            return secondsDaily
         }
         else if (dayOrdinal == daysOfWork)
         {
-            return secondsDaily + secRemainder;
+            return secondsDaily + secRemainder
         }
-        return (0);
+        return (0)
     }
     fun timesheetFullSchedule(period: IPeriod, weekSchedule: IntArray): IntArray {
         val periodDaysCount = daysInMonth(period)
@@ -189,7 +189,7 @@ object OperationsPeriod {
         val idxStop = (dayStop - 1)
         var zipedWorkAbsc = template.zip(subtract)
         val result = zipedWorkAbsc.mapIndexed {idx, z ->
-            var res = 0;
+            var res = 0
             if (idx in idxFrom..idxStop) {
                 res = max(0, z.first - z.second)
             }
@@ -204,13 +204,13 @@ object OperationsPeriod {
 
         if (dayTermFrom > dayOrdinal)
         {
-            plusSeconds = 0;
+            plusSeconds = 0
         }
         if (dayTermStop < dayOrdinal)
         {
-            plusSeconds = 0;
+            plusSeconds = 0
         }
-        return plusSeconds + partSeconds;
+        return plusSeconds + partSeconds
     }
     fun hoursFromCalendar(dayTermFrom: Int, dayTermStop: Int, dayIndex: Int, workSeconds: Int): Int {
         val dayOrdinal = (dayIndex + 1)

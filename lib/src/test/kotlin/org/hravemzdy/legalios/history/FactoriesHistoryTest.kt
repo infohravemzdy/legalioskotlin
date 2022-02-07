@@ -14,7 +14,7 @@ import java.io.FileWriter
 import java.math.BigDecimal
 import java.nio.file.Paths
 
-const val HISTORY_TEST_FOLDER = "../../../test_history";
+const val HISTORY_TEST_FOLDER = "../../../test_history"
 const val HISTORY_FOLDER_NAME = "test_history"
 const val PARENT_HISTORY_FOLDER_NAME = "legalios"
 
@@ -57,28 +57,28 @@ class FactoriesHistoryTest() : Spek({
 
                                 if (testSalaryNext.valueEquals(testSalaryProp) == false)
                                 {
-                                    yearWithChanges = true;
+                                    yearWithChanges = true
                                 }
                                 if (testHealthNext.valueEquals(testHealthProp) == false)
                                 {
-                                    yearWithChanges = true;
+                                    yearWithChanges = true
                                 }
                                 if (testSocialNext.valueEquals(testSocialProp) == false)
                                 {
-                                    yearWithChanges = true;
+                                    yearWithChanges = true
                                 }
                                 if (testTaxingNext.valueEquals(testTaxingProp) == false)
                                 {
-                                    yearWithChanges = true;
+                                    yearWithChanges = true
                                 }
-                                testSalaryProp = testSalaryNext;
-                                testHealthProp = testHealthNext;
-                                testSocialProp = testSocialNext;
-                                testTaxingProp = testTaxingNext;
+                                testSalaryProp = testSalaryNext
+                                testHealthProp = testHealthNext
+                                testSocialProp = testSocialNext
+                                testTaxingProp = testTaxingNext
                             }
                             headerData = headerData.plus(Pair<Int, Boolean>(testYear, yearWithChanges))
                         }
-                        exportHistoryStart(testProtokol, headerData);
+                        exportHistoryStart(testProtokol, headerData)
 
                         var VECT_HEALTH_MIN_MONTHLY_BASIS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
                         var VECT_HEALTH_MAX_ANNUALS_BASIS = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
@@ -309,10 +309,10 @@ class FactoriesHistoryTest() : Spek({
                                 if (testTaxingNext.marginIncomeOfWthEmp.equals(testTaxingProp.marginIncomeOfWthEmp)==false) { MES_TAXING_MARGIN_INCOME_OF_WHT_EMP = testMonth }
                                 if (testTaxingNext.marginIncomeOfWthAgr.equals(testTaxingProp.marginIncomeOfWthAgr)==false) { MES_TAXING_MARGIN_INCOME_OF_WHT_AGR = testMonth }
 
-                                testSalaryProp = testSalaryNext;
-                                testHealthProp = testHealthNext;
-                                testSocialProp = testSocialNext;
-                                testTaxingProp = testTaxingNext;
+                                testSalaryProp = testSalaryNext
+                                testHealthProp = testHealthNext
+                                testSocialProp = testSocialNext
+                                testTaxingProp = testTaxingNext
                             }
 
                             VECT_HEALTH_MIN_MONTHLY_BASIS.add(Pair(Pair(testYear, MES_HEALTH_MIN_MONTHLY_BASIS), Pair(JAN_HEALTH_MIN_MONTHLY_BASIS, propsValueToString(testHealthProp.minMonthlyBasis))))

@@ -21,7 +21,7 @@ abstract class PropsBase(override val version: VersionId) : IProps {
 
             if (x.particyCode != 0)
             {
-                cutAnnualsBasis = rawAnnualsBasis;
+                cutAnnualsBasis = rawAnnualsBasis
                 if (agr.first > 0)
                 {
                     var ovrAnnualsBasis = max(0, rawAnnualsBasis - agr.second)

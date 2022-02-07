@@ -96,7 +96,7 @@ object OperationsRound {
 
     fun decNearRoundUp(valueDec: BigDecimal, nearest: Int = 100): BigDecimal {
         val nearestBig = nearest.toBigDecimal()
-        val dividRet = OperationsDec.divide(valueDec, nearestBig);
+        val dividRet = OperationsDec.divide(valueDec, nearestBig)
 
         val multiRet = OperationsDec.multiply(decRoundUp(dividRet), nearestBig)
 
@@ -105,46 +105,46 @@ object OperationsRound {
 
     fun decNearRoundDown(valueDec: BigDecimal, nearest: Int = 100): BigDecimal {
         val nearestBig = nearest.toBigDecimal()
-        val dividRet = OperationsDec.divide(valueDec, nearestBig);
+        val dividRet = OperationsDec.divide(valueDec, nearestBig)
 
-        val multiRet = OperationsDec.multiply(decRoundDown(dividRet), nearestBig);
+        val multiRet = OperationsDec.multiply(decRoundDown(dividRet), nearestBig)
 
-        return multiRet;
+        return multiRet
     }
     fun decRoundUp50(valueDec: BigDecimal): BigDecimal {
         val divider = 2.toBigDecimal()
-        return OperationsDec.divide(decRoundUp(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundUp(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundUp25(valueDec: BigDecimal): BigDecimal {
         val divider = 4.toBigDecimal()
-        return OperationsDec.divide(decRoundUp(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundUp(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundUp01(valueDec: BigDecimal): BigDecimal {
         val divider = 100.toBigDecimal()
-        return OperationsDec.divide(decRoundUp(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundUp(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundDown50(valueDec: BigDecimal): BigDecimal {
         val divider = 2.toBigDecimal()
-        return OperationsDec.divide(decRoundDown(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundDown(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundDown25(valueDec: BigDecimal): BigDecimal {
         val divider = 4.toBigDecimal()
-        return OperationsDec.divide(decRoundDown(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundDown(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundDown01(valueDec: BigDecimal): BigDecimal {
         val divider = 100.toBigDecimal()
-        return OperationsDec.divide(decRoundDown(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundDown(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundNorm50(valueDec: BigDecimal): BigDecimal {
         val divider = 2.toBigDecimal()
-        return OperationsDec.divide(decRoundNorm(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundNorm(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundNorm25(valueDec: BigDecimal): BigDecimal {
         val divider = 4.toBigDecimal()
-        return OperationsDec.divide(decRoundNorm(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundNorm(OperationsDec.multiply(valueDec, divider)), divider)
     }
     fun decRoundNorm01(valueDec: BigDecimal): BigDecimal {
         val divider = 100.toBigDecimal()
-        return OperationsDec.divide(decRoundNorm(OperationsDec.multiply(valueDec, divider)), divider);
+        return OperationsDec.divide(decRoundNorm(OperationsDec.multiply(valueDec, divider)), divider)
     }
 }

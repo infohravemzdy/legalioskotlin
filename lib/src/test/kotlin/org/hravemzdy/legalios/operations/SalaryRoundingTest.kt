@@ -80,7 +80,9 @@ class SalaryRoundingTest : Spek({
 
                 val decimalRounds = _sut.hoursToHalfHoursUp(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -175,7 +177,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.hoursToQuartHoursUp(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -250,7 +254,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.hoursToHalfHoursDown(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -345,7 +351,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.hoursToQuartHoursDown(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -420,7 +428,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.hoursToHalfHoursNorm(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -515,7 +525,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.hoursToQuartHoursNorm(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -550,7 +562,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.moneyToRoundDown(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -585,7 +599,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.moneyToRoundUp(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }
@@ -620,7 +636,9 @@ class SalaryRoundingTest : Spek({
                 val _sut = PropsSalary.empty()
                 val decimalRounds = _sut.moneyToRoundNorm(decimalTarget)
 
-                assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                it("rounding value should equal ${tt.testResult}") {
+                    assertEquals(0, decimalRounds.compareTo(decimalResult), "rounding operation failed; expected = ${decimalResult}, actual=${decimalRounds}")
+                }
             }
         }
     }

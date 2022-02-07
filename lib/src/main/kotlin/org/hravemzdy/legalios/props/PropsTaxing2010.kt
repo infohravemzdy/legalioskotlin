@@ -93,7 +93,7 @@ class PropsTaxing2010(version: VersionId,
         }
         if (marginIncomeOfWithhold == 0 || incomeSum <= marginIncomeOfWithhold)
         {
-            withholdIncome = true;
+            withholdIncome = true
         }
         return withholdIncome
     }
