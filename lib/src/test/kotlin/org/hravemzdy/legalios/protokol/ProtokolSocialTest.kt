@@ -1,12 +1,11 @@
 package org.hravemzdy.legalios.protokol
 
+import org.hravemzdy.legalios.TestYearsScenario
 import org.hravemzdy.legalios.factories.FactorySocial
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolSocialTest : Spek({
-    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
-
     // 03_Social_01_MaxAnnualsBasis
     describe("GetProps_ShouldExport_MaxAnnualsBasis") {
         listOf(

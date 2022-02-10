@@ -1,12 +1,11 @@
 package org.hravemzdy.legalios.protokol
 
+import org.hravemzdy.legalios.TestYearsScenario
 import org.hravemzdy.legalios.factories.FactoryTaxing
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolTaxingTest : Spek({
-    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
-
     // 04_Taxing_01_AllowancePayer
     describe("GetProps_ShouldExport_AllowancePayer") {
         listOf(

@@ -1,12 +1,11 @@
 package org.hravemzdy.legalios.protokol
 
+import org.hravemzdy.legalios.TestYearsScenario
 import org.hravemzdy.legalios.factories.FactorySalary
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolSalaryTest : Spek({
-    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
-
     // 02_Salary_01_WorkingShiftWeek
     describe("GetProps_ShouldExport_WorkingShiftWeek") {
         listOf(

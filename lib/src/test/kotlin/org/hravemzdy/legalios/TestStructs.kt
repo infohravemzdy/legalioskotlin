@@ -12,6 +12,12 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
+data class TestYearsScenario(val minYear: Int, val maxYear: Int)
+data class TestYearExpParams(val title: String, val year: Int, val month: Int, val expected: Int)
+data class TestYearExpScenario(val title: String, val tests: List<TestYearExpParams>)
+data class TestPeriodParams(val title: String, val year: Int, val month: Int)
+data class TestPeriodScenario(val title: String, val tests: List<TestPeriodParams>)
+
 data class TestIntParams(val title: String, val year: Int, val month: Int, val expYear: Int, val expMonth: Int, val expected: Int) {
     fun testBasicResult(test: Suite, result: Result<IBundleProps, HistoryResultError>, bundle: IBundleProps?, props: IProps?, error: HistoryResultError?) {
         test.it("GetProps should return error = null") {

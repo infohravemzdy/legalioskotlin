@@ -1,12 +1,11 @@
 package org.hravemzdy.legalios.protokol
 
+import org.hravemzdy.legalios.TestYearsScenario
 import org.hravemzdy.legalios.factories.FactoryHealth
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 class ProtokolHealthTest  : Spek({
-    data class TestYearsScenario(val minYear: Int, val maxYear: Int)
-
     // 01_Health_01_MinMonthlyBasis
     describe("GetProps_ShouldExport_MinMonthlyBasis") {
         listOf(
