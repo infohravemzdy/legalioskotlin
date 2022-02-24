@@ -1,6 +1,5 @@
 package org.hravemzdy.legalios.props
 
-import org.hravemzdy.legalios.interfaces.IParticyResult
 import org.hravemzdy.legalios.interfaces.IPropsHealth
 import org.hravemzdy.legalios.service.types.VersionId
 import org.hravemzdy.legalios.service.types.WorkHealthTerms

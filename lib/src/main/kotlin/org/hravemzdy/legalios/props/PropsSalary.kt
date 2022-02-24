@@ -219,21 +219,19 @@ class PropsSalary(version: VersionId,
         return OperationsRound.decRoundNorm01(moneyValue)
     }
 
-    fun factorizeValue(baseValue: BigDecimal, factor: BigDecimal): BigDecimal {
-        val result = OperationsDec.multiply(baseValue, factor)
-
-        return result
-    }
-    fun reverzedFactorizeValue(baseValue: BigDecimal, factor: BigDecimal): BigDecimal {
-        val result = OperationsDec.multiply(baseValue, OperationsDec.divide(1.toBigDecimal(), factor))
-
-        return result
-    }
-
     companion object {
         fun empty(): IPropsSalary {
             return PropsSalary(VERSION_ZERO)
         }
-    }
+        fun factorizeValue(baseValue: BigDecimal, factor: BigDecimal): BigDecimal {
+            val result = OperationsDec.multiply(baseValue, factor)
 
+            return result
+        }
+        fun reverzedFactorizeValue(baseValue: BigDecimal, factor: BigDecimal): BigDecimal {
+            val result = OperationsDec.multiply(baseValue, OperationsDec.divide(1.toBigDecimal(), factor))
+
+            return result
+        }
+    }
 }

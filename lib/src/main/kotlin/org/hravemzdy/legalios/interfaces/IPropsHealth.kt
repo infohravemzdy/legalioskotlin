@@ -1,5 +1,7 @@
 package org.hravemzdy.legalios.interfaces
 
+import org.hravemzdy.legalios.props.ParticyHealthResult
+import org.hravemzdy.legalios.props.ParticyHealthTarget
 import org.hravemzdy.legalios.service.types.WorkHealthTerms
 import java.math.BigDecimal
 
@@ -20,5 +22,5 @@ interface IPropsHealth : IProps {
     fun roundedAugmentEmployeePaym(basisGenerals: Int, basisAugment: Int): Int
     fun roundedAugmentEmployerPaym(basisGenerals: Int, baseEmployee: Int, baseEmployer: Int): Int
     fun roundedEmployerPaym(basisResult: Int): Int
-    fun <T: IParticyResult>annualsBasisCut(particyList: Iterable<T>, incomeList: Iterable<T>, annuityBasis: Int): Triple<Int, Int, Iterable<T>>
+    fun annualsBasisCut(incomeList: Iterable<ParticyHealthTarget>, annuityBasis: Int): Triple<Int, Int, Iterable<ParticyHealthResult>>
 }

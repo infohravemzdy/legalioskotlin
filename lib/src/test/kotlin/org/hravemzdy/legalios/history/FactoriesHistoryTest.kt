@@ -121,50 +121,6 @@ class FactoriesHistoryTest() : Spek({
                         val VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
                         val VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR = mutableListOf<Pair<Pair<Int, Int>, Pair<String, String>>>()
 
-                        val tableData = mutableListOf(
-                            Pair(HEALTH_MIN_MONTHLY_BASIS         , VECT_HEALTH_MIN_MONTHLY_BASIS),
-                            Pair(HEALTH_MAX_ANNUALS_BASIS         , VECT_HEALTH_MAX_ANNUALS_BASIS),
-                            Pair(HEALTH_LIM_MONTHLY_STATE         , VECT_HEALTH_LIM_MONTHLY_STATE),
-                            Pair(HEALTH_LIM_MONTHLY_DIS50         , VECT_HEALTH_LIM_MONTHLY_DIS50),
-                            Pair(HEALTH_FACTOR_COMPOUND           , VECT_HEALTH_FACTOR_COMPOUND),
-                            Pair(HEALTH_FACTOR_EMPLOYEE           , VECT_HEALTH_FACTOR_EMPLOYEE),
-                            Pair(HEALTH_MARGIN_INCOME_EMP         , VECT_HEALTH_MARGIN_INCOME_EMP),
-                            Pair(HEALTH_MARGIN_INCOME_AGR         , VECT_HEALTH_MARGIN_INCOME_AGR),
-                            Pair(SALARY_WORKING_SHIFT_WEEK        , VECT_SALARY_WORKING_SHIFT_WEEK),
-                            Pair(SALARY_WORKING_SHIFT_TIME        , VECT_SALARY_WORKING_SHIFT_TIME),
-                            Pair(SALARY_MIN_MONTHLY_WAGE          , VECT_SALARY_MIN_MONTHLY_WAGE),
-                            Pair(SALARY_MIN_HOURLY_WAGE           , VECT_SALARY_MIN_HOURLY_WAGE),
-                            Pair(SOCIAL_MAX_ANNUALS_BASIS         , VECT_SOCIAL_MAX_ANNUALS_BASIS),
-                            Pair(SOCIAL_FACTOR_EMPLOYER           , VECT_SOCIAL_FACTOR_EMPLOYER),
-                            Pair(SOCIAL_FACTOR_EMPLOYER_HIGHER    , VECT_SOCIAL_FACTOR_EMPLOYER_HIGHER),
-                            Pair(SOCIAL_FACTOR_EMPLOYEE           , VECT_SOCIAL_FACTOR_EMPLOYEE),
-                            Pair(SOCIAL_FACTOR_EMPLOYEE_GARANT    , VECT_SOCIAL_FACTOR_EMPLOYEE_GARANT),
-                            Pair(SOCIAL_FACTOR_EMPLOYEE_REDUCE    , VECT_SOCIAL_FACTOR_EMPLOYEE_REDUCE),
-                            Pair(SOCIAL_MARGIN_INCOME_EMP         , VECT_SOCIAL_MARGIN_INCOME_EMP),
-                            Pair(SOCIAL_MARGIN_INCOME_AGR         , VECT_SOCIAL_MARGIN_INCOME_AGR),
-                            Pair(TAXING_ALLOWANCE_PAYER           , VECT_TAXING_ALLOWANCE_PAYER),
-                            Pair(TAXING_ALLOWANCE_DISAB_1ST       , VECT_TAXING_ALLOWANCE_DISAB_1ST),
-                            Pair(TAXING_ALLOWANCE_DISAB_2ND       , VECT_TAXING_ALLOWANCE_DISAB_2ND),
-                            Pair(TAXING_ALLOWANCE_DISAB_3RD       , VECT_TAXING_ALLOWANCE_DISAB_3RD),
-                            Pair(TAXING_ALLOWANCE_STUDY           , VECT_TAXING_ALLOWANCE_STUDY),
-                            Pair(TAXING_ALLOWANCE_CHILD_1ST       , VECT_TAXING_ALLOWANCE_CHILD_1ST),
-                            Pair(TAXING_ALLOWANCE_CHILD_2ND       , VECT_TAXING_ALLOWANCE_CHILD_2ND),
-                            Pair(TAXING_ALLOWANCE_CHILD_3RD       , VECT_TAXING_ALLOWANCE_CHILD_3RD),
-                            Pair(TAXING_FACTOR_ADVANCES           , VECT_TAXING_FACTOR_ADVANCES),
-                            Pair(TAXING_FACTOR_WITHHOLD           , VECT_TAXING_FACTOR_WITHHOLD),
-                            Pair(TAXING_FACTOR_SOLIDARY           , VECT_TAXING_FACTOR_SOLIDARY),
-                            Pair(TAXING_FACTOR_TAXRATE2           , VECT_TAXING_FACTOR_TAXRATE2),
-                            Pair(TAXING_MIN_AMOUNT_OF_TAXBONUS    , VECT_TAXING_MIN_AMOUNT_OF_TAXBONUS),
-                            Pair(TAXING_MAX_AMOUNT_OF_TAXBONUS    , VECT_TAXING_MAX_AMOUNT_OF_TAXBONUS),
-                            Pair(TAXING_MARGIN_INCOME_OF_TAXBONUS , VECT_TAXING_MARGIN_INCOME_OF_TAXBONUS),
-                            Pair(TAXING_MARGIN_INCOME_OF_ROUNDING , VECT_TAXING_MARGIN_INCOME_OF_ROUNDING),
-                            Pair(TAXING_MARGIN_INCOME_OF_WITHHOLD , VECT_TAXING_MARGIN_INCOME_OF_WITHHOLD),
-                            Pair(TAXING_MARGIN_INCOME_OF_SOLIDARY , VECT_TAXING_MARGIN_INCOME_OF_SOLIDARY),
-                            Pair(TAXING_MARGIN_INCOME_OF_TAXRATE2 , VECT_TAXING_MARGIN_INCOME_OF_TAXRATE2),
-                            Pair(TAXING_MARGIN_INCOME_OF_WHT_EMP  , VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP),
-                            Pair(TAXING_MARGIN_INCOME_OF_WHT_AGR  , VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR),
-                        )
-
                         for (testYear in tt.minYear..tt.maxYear) {
                             var MES_HEALTH_MIN_MONTHLY_BASIS         = 0
                             var MES_HEALTH_MAX_ANNUALS_BASIS         = 0
@@ -356,6 +312,50 @@ class FactoriesHistoryTest() : Spek({
                             VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WHT_EMP), Pair(JAN_TAXING_MARGIN_INCOME_OF_WHT_EMP, propsValueToString(testTaxingProp.marginIncomeOfWthEmp))))
                             VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR.add(Pair(Pair(testYear, MES_TAXING_MARGIN_INCOME_OF_WHT_AGR), Pair(JAN_TAXING_MARGIN_INCOME_OF_WHT_AGR, propsValueToString(testTaxingProp.marginIncomeOfWthAgr))))
                         }
+
+                        val tableData = mutableListOf(
+                            Pair(HEALTH_MIN_MONTHLY_BASIS         , VECT_HEALTH_MIN_MONTHLY_BASIS),
+                            Pair(HEALTH_MAX_ANNUALS_BASIS         , VECT_HEALTH_MAX_ANNUALS_BASIS),
+                            Pair(HEALTH_LIM_MONTHLY_STATE         , VECT_HEALTH_LIM_MONTHLY_STATE),
+                            Pair(HEALTH_LIM_MONTHLY_DIS50         , VECT_HEALTH_LIM_MONTHLY_DIS50),
+                            Pair(HEALTH_FACTOR_COMPOUND           , VECT_HEALTH_FACTOR_COMPOUND),
+                            Pair(HEALTH_FACTOR_EMPLOYEE           , VECT_HEALTH_FACTOR_EMPLOYEE),
+                            Pair(HEALTH_MARGIN_INCOME_EMP         , VECT_HEALTH_MARGIN_INCOME_EMP),
+                            Pair(HEALTH_MARGIN_INCOME_AGR         , VECT_HEALTH_MARGIN_INCOME_AGR),
+                            Pair(SALARY_WORKING_SHIFT_WEEK        , VECT_SALARY_WORKING_SHIFT_WEEK),
+                            Pair(SALARY_WORKING_SHIFT_TIME        , VECT_SALARY_WORKING_SHIFT_TIME),
+                            Pair(SALARY_MIN_MONTHLY_WAGE          , VECT_SALARY_MIN_MONTHLY_WAGE),
+                            Pair(SALARY_MIN_HOURLY_WAGE           , VECT_SALARY_MIN_HOURLY_WAGE),
+                            Pair(SOCIAL_MAX_ANNUALS_BASIS         , VECT_SOCIAL_MAX_ANNUALS_BASIS),
+                            Pair(SOCIAL_FACTOR_EMPLOYER           , VECT_SOCIAL_FACTOR_EMPLOYER),
+                            Pair(SOCIAL_FACTOR_EMPLOYER_HIGHER    , VECT_SOCIAL_FACTOR_EMPLOYER_HIGHER),
+                            Pair(SOCIAL_FACTOR_EMPLOYEE           , VECT_SOCIAL_FACTOR_EMPLOYEE),
+                            Pair(SOCIAL_FACTOR_EMPLOYEE_GARANT    , VECT_SOCIAL_FACTOR_EMPLOYEE_GARANT),
+                            Pair(SOCIAL_FACTOR_EMPLOYEE_REDUCE    , VECT_SOCIAL_FACTOR_EMPLOYEE_REDUCE),
+                            Pair(SOCIAL_MARGIN_INCOME_EMP         , VECT_SOCIAL_MARGIN_INCOME_EMP),
+                            Pair(SOCIAL_MARGIN_INCOME_AGR         , VECT_SOCIAL_MARGIN_INCOME_AGR),
+                            Pair(TAXING_ALLOWANCE_PAYER           , VECT_TAXING_ALLOWANCE_PAYER),
+                            Pair(TAXING_ALLOWANCE_DISAB_1ST       , VECT_TAXING_ALLOWANCE_DISAB_1ST),
+                            Pair(TAXING_ALLOWANCE_DISAB_2ND       , VECT_TAXING_ALLOWANCE_DISAB_2ND),
+                            Pair(TAXING_ALLOWANCE_DISAB_3RD       , VECT_TAXING_ALLOWANCE_DISAB_3RD),
+                            Pair(TAXING_ALLOWANCE_STUDY           , VECT_TAXING_ALLOWANCE_STUDY),
+                            Pair(TAXING_ALLOWANCE_CHILD_1ST       , VECT_TAXING_ALLOWANCE_CHILD_1ST),
+                            Pair(TAXING_ALLOWANCE_CHILD_2ND       , VECT_TAXING_ALLOWANCE_CHILD_2ND),
+                            Pair(TAXING_ALLOWANCE_CHILD_3RD       , VECT_TAXING_ALLOWANCE_CHILD_3RD),
+                            Pair(TAXING_FACTOR_ADVANCES           , VECT_TAXING_FACTOR_ADVANCES),
+                            Pair(TAXING_FACTOR_WITHHOLD           , VECT_TAXING_FACTOR_WITHHOLD),
+                            Pair(TAXING_FACTOR_SOLIDARY           , VECT_TAXING_FACTOR_SOLIDARY),
+                            Pair(TAXING_FACTOR_TAXRATE2           , VECT_TAXING_FACTOR_TAXRATE2),
+                            Pair(TAXING_MIN_AMOUNT_OF_TAXBONUS    , VECT_TAXING_MIN_AMOUNT_OF_TAXBONUS),
+                            Pair(TAXING_MAX_AMOUNT_OF_TAXBONUS    , VECT_TAXING_MAX_AMOUNT_OF_TAXBONUS),
+                            Pair(TAXING_MARGIN_INCOME_OF_TAXBONUS , VECT_TAXING_MARGIN_INCOME_OF_TAXBONUS),
+                            Pair(TAXING_MARGIN_INCOME_OF_ROUNDING , VECT_TAXING_MARGIN_INCOME_OF_ROUNDING),
+                            Pair(TAXING_MARGIN_INCOME_OF_WITHHOLD , VECT_TAXING_MARGIN_INCOME_OF_WITHHOLD),
+                            Pair(TAXING_MARGIN_INCOME_OF_SOLIDARY , VECT_TAXING_MARGIN_INCOME_OF_SOLIDARY),
+                            Pair(TAXING_MARGIN_INCOME_OF_TAXRATE2 , VECT_TAXING_MARGIN_INCOME_OF_TAXRATE2),
+                            Pair(TAXING_MARGIN_INCOME_OF_WHT_EMP  , VECT_TAXING_MARGIN_INCOME_OF_WHT_EMP),
+                            Pair(TAXING_MARGIN_INCOME_OF_WHT_AGR  , VECT_TAXING_MARGIN_INCOME_OF_WHT_AGR),
+                        )
 
                         for (data in tableData) {
                             exportHistoryTerm(testProtokol, headerData, data)

@@ -1,6 +1,5 @@
 package org.hravemzdy.legalios.props
 
-import org.hravemzdy.legalios.interfaces.IParticyResult
 import org.hravemzdy.legalios.interfaces.IPropsHealth
 import org.hravemzdy.legalios.service.types.OperationsDec
 import org.hravemzdy.legalios.service.types.OperationsRound
@@ -120,7 +119,31 @@ abstract class PropsHealthBase(version: VersionId,
         return max(0, compoundPayment - employeePayment)
     }
 
-    override fun <T: IParticyResult>annualsBasisCut(particyList: Iterable<T>, incomeList: Iterable<T>, annuityBasis: Int): Triple<Int, Int, Iterable<T>> {
-        return maximResultCut(particyList, incomeList, annuityBasis, maxAnnualsBasis)
+    override fun annualsBasisCut(incomeList: Iterable<ParticyHealthTarget>, annuityBasis: Int): Triple<Int, Int, Iterable<ParticyHealthResult>> {
+        val annualyMaxim: Int = maxAnnualsBasis
+        val annualsBasis = max(0, annualyMaxim - annuityBasis)
+        var resultInit = Triple<Int, Int, Iterable<ParticyHealthResult>>(annualyMaxim, annualsBasis, emptyList<ParticyHealthResult>())
+
+        var resultList = incomeList.fold(resultInit) { agr, x ->
+            var cutAnnualsBasis: Int = 0
+            val rawAnnualsBasis: Int = x.targetsBase
+            var remAnnualsBasis: Int = agr.second
+
+            if (x.particyCode != 0) {
+                cutAnnualsBasis = rawAnnualsBasis
+                if (agr.first > 0)
+                {
+                    var ovrAnnualsBasis = max(0, rawAnnualsBasis - agr.second)
+                    cutAnnualsBasis = (rawAnnualsBasis - ovrAnnualsBasis)
+                }
+                remAnnualsBasis = max(0, (agr.second - cutAnnualsBasis))
+            }
+
+            val r = ParticyHealthResult(x.contractCode, x.subjectType, x.interestCode,
+                x.subjectTerm, x.particyCode, x.targetsBase, max(0, cutAnnualsBasis))
+            return Triple<Int, Int, Iterable<ParticyHealthResult>>(agr.first, remAnnualsBasis, agr.third.plus(r))
+        }
+
+        return resultList
     }
 }
