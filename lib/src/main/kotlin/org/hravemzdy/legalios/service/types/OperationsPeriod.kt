@@ -105,7 +105,7 @@ object OperationsPeriod {
         }
         return dayTermEnd
     }
-    fun timesheetWeekSchedule(period: IPeriod, secondsWeekly: Int, workdaysWeekly: Int): IntArray {
+    fun timesheetWeekSchedule(_period: IPeriod, secondsWeekly: Int, workdaysWeekly: Int): IntArray {
         val secondsDaily = (secondsWeekly / min(workdaysWeekly, WEEKDAYS_COUNT))
 
         val secRemainder = secondsWeekly - (secondsDaily * workdaysWeekly)

@@ -85,11 +85,11 @@ class PropsTaxing2010(version: VersionId,
         var withholdIncome: Boolean = false
         if (signOpt != TaxDeclSignOption.DECL_TAX_NO_SIGNED)
         {
-            return withholdIncome
+            return false
         }
         if (noneOpt != TaxNoneSignOption.NOSIGN_TAX_WITHHOLD)
         {
-            return withholdIncome
+            return false
         }
         if (marginIncomeOfWithhold == 0 || incomeSum <= marginIncomeOfWithhold)
         {
@@ -100,7 +100,7 @@ class PropsTaxing2010(version: VersionId,
     override fun roundedAdvancesPaym(supersResult: Int, basisResult: Int): Int {
         val factorAdvances = OperationsDec.divide(factorAdvances, 100.toBigDecimal())
 
-        var advanceTaxing: Int = 0
+        var advanceTaxing: Int
         if (basisResult <= marginIncomeOfRounding)
         {
             advanceTaxing = intTaxRoundUp(OperationsDec.multiply(supersResult.toBigDecimal(), factorAdvances))

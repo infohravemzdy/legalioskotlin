@@ -78,73 +78,24 @@ class PropsSalary(version: VersionId,
         return coeffWorking
     }
 
-    override fun relativeAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
-        val amountCoeffs = factorizeValue(amountMonthly, monthlyCoeff)
+    override fun paymentWithMonthlyAndFullWeekAndFullAndWorkHours(amountMonthly: BigDecimal,
+                                                                  fullWeekHours: Int, partWeekHours: Int,
+                                                                  fullWorkHours: Int, partWorkHours: Int): BigDecimal {
+        val coeffSalary = coeffWithPartAndFullHours(partWeekHours.toBigDecimal(), fullWeekHours.toBigDecimal())
 
-        val relativeAmount = factorizeValue(amountCoeffs, workingCoeff)
+        val salaryValue = paymentWithMonthlyAndCoeffAndFullAndWorkHours(amountMonthly, coeffSalary, fullWorkHours, partWorkHours)
 
-        return relativeAmount
+        return salaryValue
     }
+    override fun paymentRoundUpWithMonthlyAndFullWeekAndFullAndWorkHours(amountMonthly: BigDecimal,
+                                                                         fullWeekHours: Int, partWeekHours: Int,
+                                                                         fullWorkHours: Int, partWorkHours: Int): BigDecimal {
+        val coeffSalary = coeffWithPartAndFullHours(partWeekHours.toBigDecimal(), fullWeekHours.toBigDecimal())
 
-    override fun reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
-        val amountCoeffs = reverzedFactorizeValue(amountMonthly, monthlyCoeff)
+        val salaryValue = paymentRoundUpWithMonthlyAndCoeffAndFullAndWorkHours(amountMonthly, coeffSalary, fullWorkHours, partWorkHours)
 
-        val reverzedAmount = reverzedFactorizeValue(amountCoeffs, workingCoeff)
-
-        return reverzedAmount
+        return salaryValue
     }
-
-    override fun relativeTariffWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
-        val paymentValue = relativeAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
-
-        return OperationsRound.decRoundNorm01(paymentValue)
-    }
-
-    override fun reverzedTariffWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
-        val paymentValue = reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
-
-        return OperationsRound.decRoundNorm01(paymentValue)
-    }
-
-    override fun relativePaymentWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
-        val paymentValue = relativeAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
-
-        return OperationsRound.decRoundNorm(paymentValue)
-    }
-
-    override fun reverzedPaymentWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
-        val paymentValue = reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
-
-        return OperationsRound.decRoundNorm(paymentValue)
-    }
-
-
-    override fun paymentWithAmountFixed(amountFixed: BigDecimal): BigDecimal {
-        val paymentValue = decPaymentWithAmountFixed(amountFixed)
-
-        return OperationsRound.decRoundNorm(paymentValue)
-    }
-    override fun paymentRoundUpWithAmountFixed(amountFixed: BigDecimal): BigDecimal {
-        val paymentValue = decPaymentWithAmountFixed(amountFixed)
-
-        return OperationsRound.decRoundUp(paymentValue)
-    }
-    override fun paymentWithTariffAndHours(tariffHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal {
-        val paymentValue = decPaymentWithTariffAndHours(tariffHourly, workingsHours)
-
-        return OperationsRound.decRoundNorm(paymentValue)
-    }
-    override fun paymentRoundUpWithTariffAndHours(tariffHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal {
-        val paymentValue = decPaymentWithTariffAndHours(tariffHourly, workingsHours)
-
-        return OperationsRound.decRoundUp(paymentValue)
-    }
-    override fun tariffWithPaymentAndHours(amountHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal {
-        val tariffValue = decTariffWithPaymentAndHours(amountHourly, workingsHours)
-
-        return moneyToRoundNorm(tariffValue)
-    }
-
     override fun paymentWithMonthlyAndCoeffAndFullAndWorkHours(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, fullWorkHours: Int, partWorkHours: Int): BigDecimal {
         val amountCoeffs = factorizeValue(amountMonthly, monthlyCoeff)
 
@@ -173,23 +124,70 @@ class PropsSalary(version: VersionId,
 
         return OperationsRound.decRoundUp(paymentValue)
     }
-    override fun paymentWithMonthlyAndFullWeekAndFullAndWorkHours(amountMonthly: BigDecimal,
-                                                                  fullWeekHours: Int, partWeekHours: Int,
-                                                                  fullWorkHours: Int, partWorkHours: Int): BigDecimal {
-        val coeffSalary = coeffWithPartAndFullHours(partWeekHours.toBigDecimal(), fullWeekHours.toBigDecimal())
+    override fun relativeAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
+        val amountCoeffs = factorizeValue(amountMonthly, monthlyCoeff)
 
-        val salaryValue = paymentWithMonthlyAndCoeffAndFullAndWorkHours(amountMonthly, coeffSalary, fullWorkHours, partWorkHours)
+        val relativeAmount = factorizeValue(amountCoeffs, workingCoeff)
 
-        return salaryValue
+        return relativeAmount
     }
-    override fun paymentRoundUpWithMonthlyAndFullWeekAndFullAndWorkHours(amountMonthly: BigDecimal,
-                                                                         fullWeekHours: Int, partWeekHours: Int,
-                                                                         fullWorkHours: Int, partWorkHours: Int): BigDecimal {
-        val coeffSalary = coeffWithPartAndFullHours(partWeekHours.toBigDecimal(), fullWeekHours.toBigDecimal())
 
-        val salaryValue = paymentRoundUpWithMonthlyAndCoeffAndFullAndWorkHours(amountMonthly, coeffSalary, fullWorkHours, partWorkHours)
+    override fun relativeTariffWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
+        val paymentValue = relativeAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
 
-        return salaryValue
+        return OperationsRound.decRoundNorm01(paymentValue)
+    }
+
+    override fun relativePaymentWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
+        val paymentValue = relativeAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
+
+        return OperationsRound.decRoundNorm(paymentValue)
+    }
+
+    override fun reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
+        val amountCoeffs = reverzedFactorizeValue(amountMonthly, monthlyCoeff)
+
+        val reverzedAmount = reverzedFactorizeValue(amountCoeffs, workingCoeff)
+
+        return reverzedAmount
+    }
+
+    override fun reverzedTariffWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
+        val paymentValue = reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
+
+        return OperationsRound.decRoundNorm01(paymentValue)
+    }
+
+    override fun reverzedPaymentWithMonthlyAndCoeffAndWorkCoeff(amountMonthly: BigDecimal, monthlyCoeff: BigDecimal, workingCoeff: BigDecimal): BigDecimal {
+        val paymentValue = reverzedAmountWithMonthlyAndCoeffAndWorkCoeff(amountMonthly, monthlyCoeff, workingCoeff)
+
+        return OperationsRound.decRoundNorm(paymentValue)
+    }
+
+    override fun paymentWithTariffAndHours(tariffHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal {
+        val paymentValue = decPaymentWithTariffAndHours(tariffHourly, workingsHours)
+
+        return OperationsRound.decRoundNorm(paymentValue)
+    }
+    override fun paymentRoundUpWithTariffAndHours(tariffHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal {
+        val paymentValue = decPaymentWithTariffAndHours(tariffHourly, workingsHours)
+
+        return OperationsRound.decRoundUp(paymentValue)
+    }
+    override fun tariffWithPaymentAndHours(amountHourly: BigDecimal, workingsHours: BigDecimal): BigDecimal {
+        val tariffValue = decTariffWithPaymentAndHours(amountHourly, workingsHours)
+
+        return moneyToRoundNorm(tariffValue)
+    }
+    override fun paymentWithAmountFixed(amountFixed: BigDecimal): BigDecimal {
+        val paymentValue = decPaymentWithAmountFixed(amountFixed)
+
+        return OperationsRound.decRoundNorm(paymentValue)
+    }
+    override fun paymentRoundUpWithAmountFixed(amountFixed: BigDecimal): BigDecimal {
+        val paymentValue = decPaymentWithAmountFixed(amountFixed)
+
+        return OperationsRound.decRoundUp(paymentValue)
     }
     override fun hoursToHalfHoursUp(hoursValue: BigDecimal): BigDecimal {
         return OperationsRound.decRoundUp50(hoursValue)

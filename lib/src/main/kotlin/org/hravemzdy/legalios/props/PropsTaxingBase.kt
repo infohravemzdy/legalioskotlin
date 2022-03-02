@@ -198,7 +198,7 @@ abstract class PropsTaxingBase(version: VersionId,
     override fun roundedBaseAdvances(incomeResult: Int): Int {
         val amountForCalc: Int = taxableIncomeBasis(incomeResult)
 
-        var advanceBase: Int = 0
+        var advanceBase: Int
         if (amountForCalc <= marginIncomeOfRounding)
         {
             advanceBase = intTaxRoundUp(amountForCalc.toBigDecimal())
